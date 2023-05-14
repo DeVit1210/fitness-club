@@ -1,6 +1,6 @@
 import {Membership, PeriodMembership, PersonalTrainerMembership, VisitMembership} from "../models/Membership.js";
 
-function getSchemaNameFromType(type) {
+export function getSchemaNameFromType(type) {
     switch (type) {
         case "visit": return "VisitMembership";
         case "period": return "PeriodMembership"

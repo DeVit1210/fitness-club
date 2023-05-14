@@ -21,3 +21,5 @@ const TrainerSchema = new Schema({
 })
 
 export const Trainer = mongoose.model('Trainer', TrainerSchema);
+
+// TODO: add working days regulation

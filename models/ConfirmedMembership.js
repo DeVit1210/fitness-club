@@ -7,6 +7,9 @@ const ConfirmedMembershipSchema = new Schema({
     },
     dateFrom: {
         type: Date, required: true
+    },
+    status: {
+        type: String, enum: ['future', 'active', 'frozen', 'expired'], required: true
     }
 })
 export const ConfirmedMembership =
@@ -29,7 +32,12 @@ export const ConfirmedPeriodMembership =
     mongoose.model('ConfirmedPeriodMembership', ConfirmedPeriodMembershipSchema);
 
 const ConfirmedPersonalTrainerMembershipSchema = new Schema({
-    // TODO: add Trainer reference and days of training
+    trainer: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Trainer', required: true
+    },
+    dateTo: {
+        type: Date, required: true
+    }
 })
 
 export const ConfirmedPersonalTrainerMembership =
