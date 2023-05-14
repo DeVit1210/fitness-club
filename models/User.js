@@ -16,6 +16,11 @@ const UserSchema = new Schema({
     },
     name: {
         type: String, required: true
-    }
+    },
+    memberships: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'ConfirmedMembership'
+        }
+    ]
 })
 export const User = mongoose.model('User', UserSchema);
