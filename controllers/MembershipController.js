@@ -1,5 +1,12 @@
 import {Membership, PeriodMembership, PersonalTrainerMembership, VisitMembership} from "../models/Membership.js";
-import {response} from "express";
+
+function getSchemaNameFromType(type) {
+    switch (type) {
+        case "visit": return "VisitMembership";
+        case "period": return "PeriodMembership"
+        case "trainer": return "PersonalTrainerMembership";
+    }
+}
 
 export const findAll = (req, res) => {
     Membership.find()
@@ -8,7 +15,7 @@ export const findAll = (req, res) => {
 }
 
 export const findByType = (req, res) => {
-    Membership.find({__t: req.params.type})
+    Membership.find({__t: getSchemaNameFromType(req.params.type)})
         .then(response => res.json(response))
         .catch(err => res.json(400).send(err.message));
 }
@@ -18,17 +25,17 @@ export const add = (req, res) => {
     switch (type) {
         case "period": {
             const periodMembership = new PeriodMembership(req.body);
-            periodMembership.save().then(res.status(200).message("period membership added successfully!"))
+            periodMembership.save().then(res.status(200).send("period membership added successfully!"))
             break;
         }
         case "visit": {
             const visitMembership = new VisitMembership(req.body);
-            visitMembership.save().then(res.status(200).message("visit membership added successfully!"))
+            visitMembership.save().then(res.status(200).send("visit membership added successfully!"))
             break;
         }
         case "trainer": {
             const trainerMembership = new PersonalTrainerMembership(req.body);
-            trainerMembership.save().then(res.status(200).message("trainer membership added successfully!"))
+            trainerMembership.save().then(res.status(200).send("trainer membership added successfully!"))
             break;
         }
         default: res.status(400).send("wrong membership type");

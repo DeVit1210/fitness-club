@@ -26,6 +26,8 @@ const PeriodMembershipSchema = new Schema({
 export const PeriodMembership = Membership.discriminator('PeriodMembership', PeriodMembershipSchema);
 
 const PersonalTrainerMembershipSchema = new Schema({
-
+    monthsQuantity: {
+        type: Number, required: true
+    },
 })
 export const PersonalTrainerMembership = Membership.discriminator('PersonalTrainerMembership', PersonalTrainerMembershipSchema);
