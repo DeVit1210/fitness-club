@@ -2,9 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors"
 
-import {UserRoute} from "./routes/UserRoute";
+import {UserRoute} from "./routes/UserRoute.js";
 
-const mongoose = require('mongoose').default;
+import mongoose from "mongoose";
 mongoose.connect('mongodb://127.0.0.1:27017/fitness-club-db');
 const db = mongoose.connection;
 db.on('error', (err) => {

@@ -1,9 +1,8 @@
-import {User} from "../models/User";
+import {User} from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const jwtSecret = "rysykevich_ekaterina_jwt"
-
 export async function checkAuthentication(jwtToken, callback) {
     if (jwtToken) {
         try {
@@ -34,16 +33,17 @@ export async function checkAuthorization(username, password, callback) {
 export const register = async (req, res) => {
     const userData = req.body;
     userData.password = await bcrypt.hash(req.body.password, 10);
-    User.create(userData).then(response => res.status(200)).catch(err => res.status(500).send(err.message));
+    User.create(userData)
+        .then(response => res.status(200).send("user created successfully"))
+        .catch(err => res.status(500).send(err.message));
 }
 
 export const login = async (req, res) => {
     const {username, password} = req.body;
     await checkAuthorization(username, password, (token, errMessage) => {
         if (errMessage) {
-            res.json(500).send(errMessage);
-        }
-        res.json({token: token})
+            res.status(500).send(errMessage);
+        } else res.json({token: token})
     })
 }
 
@@ -72,8 +72,7 @@ export const findByUsername = async (req, res) => {
     await checkAuthentication(token, (user, errMessage) => {
         if (errMessage) {
             res.status(500).send(errMessage);
-        }
-        User.findOne({username: user.username})
+        } else User.findOne({username: user.username})
             .then(response => res.json({user: response}))
             .catch(err => res.status(400).send(err.message))
     })
@@ -84,8 +83,7 @@ export const update = async (req, res) => {
     await checkAuthentication(token, (user, errMessage) => {
         if (errMessage) {
             res.status(500).send(errMessage);
-        }
-        User.findByIdAndUpdate(user.id, {$set: req.body})
+        } else User.findByIdAndUpdate(user.id, {$set: req.body})
             .then(response => res.json({user: response}))
             .catch(err => res.status(400).send(err.message))
     })

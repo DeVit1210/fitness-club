@@ -1,4 +1,4 @@
-import {register, login, update, findByUsername, findAll} from "../controllers/UserController";
+import {register, login, update, findByUsername, findAll} from "../controllers/UserController.js";
 import express from "express";
 export const UserRoute = express.Router();
 
