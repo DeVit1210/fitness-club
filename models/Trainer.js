@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+import {ScheduleSchema} from "./Schedule.js";
 
 const TrainerSchema = new Schema({
     surname: {
@@ -17,7 +18,9 @@ const TrainerSchema = new Schema({
     additionalInformation: {
         type: String, required: true
     },
-    workingDays: [ { type: String } ]
+    schedule: {
+        type: ScheduleSchema, required: true
+    }
 })
 
 export const Trainer = mongoose.model('Trainer', TrainerSchema);
