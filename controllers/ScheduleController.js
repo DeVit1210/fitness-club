@@ -1,6 +1,7 @@
 import {Schedule} from "../models/Schedule.js";
 import {Trainer} from "../models/Trainer.js";
 import {WorkingDay} from "../models/WorkingDay.js";
+import {checkAuthentication} from "./UserController.js";
 
 export const add = async (req, res) => {
     const workingDayNames = req.body.workingDays;
@@ -21,3 +22,20 @@ export const add = async (req, res) => {
         .then(() => res.json("trainer schedule successfully updated"))
         .catch(err => res.status(400).send(err.message))
 }
+
+export const takePeriod = async (req, res) => {
+    await checkAuthentication(req.headers.authorization, (user, errMessage) => {
+        if(errMessage) {
+            res.status(400).send(errMessage);
+        } else {
+            const { trainerId, workingDay, timePeriod } = req.body;
+            Trainer.findById(trainerId).then(trainer => {
+                const workingDays = trainer.schedule.workingDays;
+                const periodMap = workingDays.filter(day => day.name === workingDay).at(0).workingPeriodMap;
+                periodMap.set(timePeriod, true);
+                trainer.save().then(() => res.json("trainer schedule updated!"))
+            })
+        }
+    })
+}
+
