@@ -8,6 +8,9 @@ const ConfirmedMembershipSchema = new Schema({
     dateFrom: {
         type: Date, required: true
     },
+    confirmationDate: {
+        type: Date, required: true
+    },
     status: {
         type: String, enum: ['future', 'active', 'frozen', 'expired'], required: true
     }

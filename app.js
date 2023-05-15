@@ -29,7 +29,6 @@ app.use('/confirmed-membership', ConfirmedMembershipRoute);
 app.use('/schedule', ScheduleRoute)
 app.use('/trainer', TrainerRoute)
 
-
 app.listen(8080, () => {
     console.log("Server is on!")
 })

@@ -28,12 +28,15 @@ export const takePeriod = async (req, res) => {
         if(errMessage) {
             res.status(400).send(errMessage);
         } else {
-            const { trainerId, workingDay, timePeriod } = req.body;
+            const { trainerId, timePeriod } = req.body;
             Trainer.findById(trainerId).then(trainer => {
                 const workingDays = trainer.schedule.workingDays;
-                const periodMap = workingDays.filter(day => day.name === workingDay).at(0).workingPeriodMap;
-                periodMap.set(timePeriod, true);
-                trainer.save().then(() => res.json("trainer schedule updated!"))
+                const workingPeriodMaps = workingDays.map(period => period.workingPeriodMap);
+                workingPeriodMaps.forEach(workingPeriodMap => {
+                    console.log(workingPeriodMap);
+                    workingPeriodMap.set(timePeriod, true)
+                })
+                trainer.save().then(() => res.json("trainer schedule successfully updated!"))
             })
         }
     })
