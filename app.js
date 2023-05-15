@@ -4,6 +4,7 @@ import cors from "cors"
 
 import {UserRoute} from "./routes/UserRoute.js";
 import {MembershipRoute} from "./routes/MembershipRoute.js";
+import {ConfirmedMembershipRoute} from "./routes/ConfirmedMembershipRoute.js";
 
 import mongoose from "mongoose";
 mongoose.connect('mongodb://127.0.0.1:27017/fitness-club-db');
@@ -22,6 +23,8 @@ app.use(cors());
 
 app.use('/user', UserRoute);
 app.use('/membership', MembershipRoute)
+app.use('/confirmed-membership', ConfirmedMembershipRoute);
+
 
 app.listen(8080, () => {
     console.log("Server is on!")

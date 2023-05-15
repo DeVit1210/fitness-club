@@ -21,7 +21,7 @@ const ConfirmedVisitMembershipSchema = new Schema({
     }
 })
 export const ConfirmedVisitMembership =
-    mongoose.model('ConfirmedVisitMembership', ConfirmedVisitMembershipSchema);
+    ConfirmedMembership.discriminator('ConfirmedVisitMembership', ConfirmedVisitMembershipSchema);
 
 const ConfirmedPeriodMembershipSchema = new Schema({
     dateTo: {
@@ -29,7 +29,7 @@ const ConfirmedPeriodMembershipSchema = new Schema({
     }
 })
 export const ConfirmedPeriodMembership =
-    mongoose.model('ConfirmedPeriodMembership', ConfirmedPeriodMembershipSchema);
+    ConfirmedMembership.discriminator('ConfirmedPeriodMembership', ConfirmedPeriodMembershipSchema);
 
 const ConfirmedPersonalTrainerMembershipSchema = new Schema({
     trainer: {
@@ -41,5 +41,5 @@ const ConfirmedPersonalTrainerMembershipSchema = new Schema({
 })
 
 export const ConfirmedPersonalTrainerMembership =
-    mongoose.model('ConfirmedPersonalTrainerMembership', ConfirmedPersonalTrainerMembershipSchema)
+    ConfirmedMembership.discriminator('ConfirmedPersonalTrainerMembership', ConfirmedPersonalTrainerMembershipSchema)
 

@@ -51,17 +51,17 @@ export const findByType = (req, res) => {
 }
 
 export const add = async (req, res) => {
-    await checkAuthentication(req.params.token, (user, errMessage) => {
+    await checkAuthentication(req.headers.authorization, (user, errMessage) => {
         if(errMessage) {
             res.status(400).send(errMessage);
         } else Membership.findById(req.params.membershipId)
             .then(membership => {
-                generateMembershipData(membership, req.body, async (errMessage, data) => {
+                generateMembershipData(membership, req.body, async (errMessage, confirmedMembership) => {
                     if (errMessage) {
                         res.status(400).send(errMessage);
                     } else {
-                        await membership.save();
-                        await User.findByIdAndUpdate(user.id, {$push: {memberships: membership}})
+                        await confirmedMembership.save();
+                        await User.findByIdAndUpdate(user.id, {$push: {memberships: confirmedMembership._id}})
                         res.send("confirmed membership added successfully!");
                     }
                 })
