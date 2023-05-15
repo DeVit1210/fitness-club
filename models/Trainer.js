@@ -19,7 +19,7 @@ const TrainerSchema = new Schema({
         type: String, required: true
     },
     schedule: {
-        type: ScheduleSchema, required: true
+        type: ScheduleSchema
     }
 })
 
