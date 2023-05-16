@@ -23,22 +23,32 @@ export const add = async (req, res) => {
         .catch(err => res.status(400).send(err.message))
 }
 
+async function updateSchedule(valueToSet, requestBody) {
+    const { trainerId, timePeriod } = requestBody;
+    Trainer.findById(trainerId).then( trainer => {
+        const workingDays = trainer.schedule.workingDays;
+        const workingPeriodMaps = workingDays.map(period => period.workingPeriodMap);
+        workingPeriodMaps.forEach(workingPeriodMap => {
+            console.log(workingPeriodMap);
+            workingPeriodMap.set(timePeriod, valueToSet)
+        })
+        return trainer.save()
+    })
+}
+
 export const takePeriod = async (req, res) => {
     await checkAuthentication(req.headers.authorization, (user, errMessage) => {
         if(errMessage) {
             res.status(400).send(errMessage);
-        } else {
-            const { trainerId, timePeriod } = req.body;
-            Trainer.findById(trainerId).then(trainer => {
-                const workingDays = trainer.schedule.workingDays;
-                const workingPeriodMaps = workingDays.map(period => period.workingPeriodMap);
-                workingPeriodMaps.forEach(workingPeriodMap => {
-                    console.log(workingPeriodMap);
-                    workingPeriodMap.set(timePeriod, true)
-                })
-                trainer.save().then(() => res.json("trainer schedule successfully updated!"))
-            })
-        }
+        } else updateSchedule(true, req.body).then(() => res.json("trainer schedule successfully updated!"));
+    })
+}
+
+export const freePeriod = async (req, res) => {
+    await checkAuthentication(req.headers.authorization, (user, errMessage) => {
+        if(errMessage) {
+            res.status(400).send(errMessage);
+        } else updateSchedule(false, req.body).then(() => res.json("trainer schedule successfully updated!"));
     })
 }
 

@@ -75,10 +75,19 @@ export const add = async (req, res) => {
             .catch(() => res.status(400).send("invalid membership id"))
     })
 }
+export const destroy = async (req, res) => {
+    await checkAuthentication(req.headers.authorization, (user, errMessage) => {
+        if (errMessage) {
+            res.status(400).send(errMessage);
+        } else Membership.findByIdAndDelete(req.params.membershipId)
+            .then(() => res.json("membership has been successfully deleted!"))
+            .catch(() => res.status(400).send("invalid membership id"))
+    })
+}
 async function findBetween(start, end) {
     const startDate = new Date(start);
     const endDate = new Date(end);
-    await ConfirmedMembership.findOne({confirmationDate: {$gte: startDate, $lte: endDate}});
+    return ConfirmedMembership.find({confirmationDate: {$gte: startDate, $lte: endDate}});
 }
 
 export const findBetweenWithType = (req, res) => {

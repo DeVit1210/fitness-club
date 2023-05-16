@@ -6,4 +6,4 @@ ConfirmedMembershipRoute.post('/add/:membershipId', add);
 ConfirmedMembershipRoute.get('/', findAll);
 ConfirmedMembershipRoute.get('/:type', findByType);
 ConfirmedMembershipRoute.post("/", findAllSorted);
-ConfirmedMembershipRoute.get("/filter", findBetweenWithType);
+ConfirmedMembershipRoute.post("/filter", findBetweenWithType);
