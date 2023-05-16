@@ -1,11 +1,15 @@
+/*base*/
+
 html{
     font-size: 10px;
 }
 *{
+    font-size: 1.5rem;
     font-family: Verdana, sans-serif;
     font-style: normal;
     font-weight: 400;
     margin: 0;
+    box-sizing: border-box;
 }
 .wrapper{
     max-width: 1280px;
@@ -20,6 +24,7 @@ h2, h2>*{
 }
 h3{
     font-size: 4.4rem;
+    font-weight: 600;
 }
 .button {
     padding: 11px 25px 13px;
@@ -39,7 +44,7 @@ h3{
     background-color: transparent;
 }
 
-
+/*header block*/
 .header{
     padding: 30px 0;
 
@@ -76,10 +81,265 @@ h3{
     gap:20px;
 }
 
-
+/*promo block*/
 .promo__wrapper{
     border-radius: 20px;
+    overflow: hidden;
 }
 .promo__content{
+    margin-top: -10px;
     background-color: black;
+    padding: 65px;
+    display: flex;
+    justify-content: space-between;
+}
+.promo__img{
+    width: 100%;
+}
+
+.promo__content .button{
+    font-size: 2.2rem;
+    font-weight: bold;
+    width:30%;
+}
+
+.promo__title{
+    color:#cbf553;
+ }
+.promo__text{
+    color:white;
+    font-size: 2.8rem;
+}
+
+
+/*about-us*/
+.about-us{
+    margin-top: 50px;
+}
+
+.about-us__wrapper{
+    background-color: #f1f1f1;
+    padding: 100px 0 50px;
+    border-radius: 20px;
+}
+.about-us__info{
+    font-size: 2.8rem;
+    text-align: center;
+    width:75%;
+    margin: 0 auto 60px;
+    line-height: 4rem;
+}
+.about-us__info *{
+    font-size: 2.8rem;
+    font-weight: 600;
+    font-style: italic;
+}
+.about-us__info span span{
+    color:#cbf553;
+}
+.about-us__advantage{
+    background-color: #cbf553;
+    border-radius: 20px;
+    flex-basis: 23%;
+    padding: 50px 30px;
+    font-size: 2rem;
+}
+.layout-3-column{
+    display: flex;
+    justify-content: space-around;
+
+}
+.advantage__text{
+    margin: 20px 0 0;
+    font-size: 2rem;
+}
+
+
+/*memberships*/
+.memberships{
+    margin-top: 40px;
+    padding: 60px;
+    background-color: #f1f1f1;
+}
+.memberships__title{
+    margin-bottom: 40px;
+}
+
+.membership{
+    background-color: #ffffff;
+    border-radius: 40px;
+    padding: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    gap:30px;
+}
+.membership__image{
+    background-color: #000000;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    width:30%;
+    position: relative;
+}
+.membership__title{
+    color: #cbf553;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.membership__logo{
+    color:#ffffff;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 4rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: end;
+}
+.membership__logo span{
+    color:#cbf553;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 4rem;
+}
+.membership__description{
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    margin-bottom: 20px;
+}
+.membership__chosen-text{
+    font-size: 1.2rem;
+    color:#c6c6c6;
+}
+.membership .button{
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.membership__order{
+    display: flex;
+    gap:20px;
+}
+
+.membership__price{
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+
+/*free-train*/
+.free-train{
+    padding: 70px 0;
+}
+.free-train__wrapper{
+    background-color: black;
+    border-radius: 40px;
+    padding: 90px;
+}
+.layout-2-column{
+    display: flex;
+    justify-content: space-between;
+}
+.free-train__content{
+    flex-basis: 50%;
+}
+.free-train__title{
+    color:#cbf553;
+    margin-bottom: 30px;
+}
+.free-train__info{
+    color:#ffffff;
+    font-size: 2.2rem;
+}
+.free-train__input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    display: block;
+    width: 400px;
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+}
+.free-train__form button{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 20px 40px;
+    margin-top: 50px;
+}
+
+
+/*photo*/
+.photo__wrapper{
+    border: 3px solid #cbf553;
+    border-radius: 40px;
+    padding: 20px;
+}
+.photo__title{
+    margin-bottom: 40px;
+}
+.photo-img{
+    width: 49%;
+}
+video{
+    width: 60%;
+    display: block;
+    margin: 30px auto;
+}
+
+
+/*footer*/
+.footer{
+    background-color: black;
+    margin-top: 70px;
+}
+.contacts__title{
+    color:#cbf553;
+    margin-bottom: 50px;
+}
+.footer__contacts{
+    padding: 50px 0;
+}
+.layout-4-column{
+    display:flex;
+    justify-content: space-between;
+}
+.contacts__text{
+    color:#c6c6c6;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.contacts__info{
+    color:#ffffff;
+    font-size: 2.2rem;
+}
+.messenger__icon{
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.contact button{
+    font-size: 2rem;
+    font-weight: 500;
+    height: 60px;
+}
+.map{
+    border-radius: 40px;
+    margin-top: 50px;
+}
+.arrow-right{
+    transform: rotate(180deg);
+}
+
+
+/*trainers*/
+.trainer{
+    display: flex;
+}
+.trainer img{
+    width: 35%;
+}
+.trainer__content{
+    border: 3px solid #cbf553;
+    border-radius: 30px;
 }
