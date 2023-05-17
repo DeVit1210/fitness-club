@@ -333,13 +333,70 @@ video{
 
 
 /*trainers*/
+.trainers{
+    margin-top: 100px;
+}
+.trainers .layout-3-column{
+    gap:0;
+    flex-direction: row;
+}
+.trainers__title{
+    margin-bottom: 50px;
+}
+.trainers__carousel{
+    display: flex;
+    align-items: center;
+}
 .trainer{
     display: flex;
+    justify-content: space-between;
+    width: 1190px;
 }
 .trainer img{
-    width: 35%;
+    flex-basis: 40%;
 }
 .trainer__content{
     border: 3px solid #cbf553;
     border-radius: 30px;
+    padding: 30px;
+    flex-basis: 50%;
+}
+.trainer__content>*{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.trainer__name{
+    font-size: 3rem;
+    font-style: oblique;
+    font-weight: 600;
+
+}
+.carousel__wrapper{
+    width: 1200px;
+    overflow: hidden;
+}
+
+.carousel{
+    position: relative;
+    left:-1200px;
+
+}
+@keyframes move-right{
+    from {left: -1200px}
+    to {left: -2400px;}
+}
+
+.transition-right{
+    animation-name: move-right;
+    animation-duration: 5s;
+}
+
+@keyframes move-left{
+    from {left: -1200px}
+    to {left: 0;}
+}
+
+.transition-left{
+    animation-name: move-left;
+    animation-duration: 5s;
 }
