@@ -10,7 +10,7 @@ $(document).ready(()=>{
     });
     $('#coaches').click(()=>{
         $data.innerHTML='';
-        $data.load('');
+        $data.load('../../pages/admin-account/coaches.html');
     });
     $('#users').click(()=>{
         $data.innerHTML='';
