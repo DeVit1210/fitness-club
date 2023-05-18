@@ -543,3 +543,15 @@ input{
 .coaches__sort-form{
     margin-bottom: 40px;
 }
+.check-message{
+    margin: 30px auto;
+    padding: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+.active{
+    background-color: rgba(173, 255, 47, 0.57);
+}
+.inactive{
+    background-color: rgba(255, 0, 0, 0.51);
+}

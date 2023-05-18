@@ -14,6 +14,6 @@ $(document).ready(()=>{
     });
     $('#users').click(()=>{
         $data.innerHTML='';
-        $data.load('');
+        $data.load('../../pages/admin-account/users.html');
     })
 })
