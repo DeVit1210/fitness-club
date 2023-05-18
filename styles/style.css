@@ -425,7 +425,7 @@ video{
 .account-navigation{
     flex-basis: 30%;
     background-color: #cbf553;
-    height: 100%;
+    max-height: 100%;
     padding: 150px 50px;
 }
 .account-navigation__wrapper{
@@ -493,4 +493,42 @@ input{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+.issued-memberships__filter-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+}
+.issued-memberships__filter-form label{
+    font-size: 1.5rem;
+}
+.total-income{
+    background-color: #cbf553;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 40px;
+    border: 2px solid #000000;
+}
+.total-income__title{
+    font-size: 3rem;
+    font-weight: 600;
+    font-style: oblique;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.total-income__value{
+    font-size: 2.6rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.total-income__value:before{
+    content:url('../src/money.png')
+}
+.total-income__value:after{
+    content:url('../src/money.png');
 }
