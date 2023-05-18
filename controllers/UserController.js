@@ -1,6 +1,7 @@
 import {User} from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import {getSchemaFromConfirmedMembershipType} from "./ConfirmedMembershipController.js";
 
 export const jwtSecret = "rysykevich_ekaterina_jwt"
 export async function checkAuthentication(jwtToken, callback) {
@@ -15,6 +16,7 @@ export async function checkAuthentication(jwtToken, callback) {
         callback(null, "not authorized");
     }
 }
+
 
 export async function checkAuthorization(username, password, callback) {
     if(username === "admin@gmail.com" && password === "admin") {
@@ -88,5 +90,31 @@ export const update = async (req, res) => {
             .catch(err => res.status(400).send(err.message))
     })
 }
+
+export const findMemberships = async (req, res) => {
+    const token = req.headers.authorization;
+    await checkAuthentication(token, (user, errMessage) => {
+        if (errMessage) {
+            res.status(500).send(errMessage);
+        } else User.findById(user.id).populate('memberships')
+            .then(user => res.json(user.memberships))
+            .catch(err => res.status(400).send(err.message))
+    })
+}
+
+export const findMembershipsWithStatus= async (req, res) => {
+    const token = req.headers.authorization;
+    await checkAuthentication(token, (user, errMessage) => {
+        if (errMessage) {
+            res.status(500).send(errMessage);
+        } else User.findById(user.id).populate('memberships')
+            .then(user => {
+                console.log(req.params.status);
+                console.log(user.memberships);
+                res.json(user.memberships.filter(item => item.status === req.params.status))
+            }).catch(err => res.status(400).send(err.message))
+    })
+}
+
 
 

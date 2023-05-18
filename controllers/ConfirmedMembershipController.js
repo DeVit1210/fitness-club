@@ -19,13 +19,22 @@ function getMembershipType(membership){
     } else return 'undefined';
 }
 
-function generateMembershipData(membership, requestBody, callback) {
+export function getSchemaFromConfirmedMembershipType(type) {
+    switch (type) {
+        case 'visit': return 'ConfirmedVisitMembership';
+        case 'period': return 'ConfirmedPeriodMembership';
+        case 'trainer': return 'ConfirmedPersonalTrainerMembership';
+    }
+}
+
+function generateMembershipData(membership, data, callback) {
     const membershipType = getMembershipType(membership);
     const membershipData = {
         membership: membership,
-        dateFrom: new Date(requestBody.dateFrom),
+        user: data.userId,
+        dateFrom: new Date(data.dateFrom),
         confirmationDate: Date.now(),
-        status: new Date().getDay() === new Date(requestBody.dateFrom).getDay() ? 'active' : 'future',
+        status: new Date().getDay() === new Date(data.dateFrom).getDay() ? 'active' : 'future',
     }
     switch (membershipType) {
         case 'visit': {
@@ -37,7 +46,7 @@ function generateMembershipData(membership, requestBody, callback) {
             callback(null, new ConfirmedPeriodMembership(membershipData)); break;
         }
         case 'trainer': {
-            membershipData.trainer = requestBody.trainer;
+            membershipData.trainer = data.trainer;
             callback(null, new ConfirmedPersonalTrainerMembership(membershipData)); break;
         }
         default: callback('wrong membership type', null);
@@ -62,7 +71,9 @@ export const add = async (req, res) => {
             res.status(400).send(errMessage);
         } else Membership.findById(req.params.membershipId)
             .then(membership => {
-                generateMembershipData(membership, req.body, async (errMessage, confirmedMembership) => {
+                const data = req.body;
+                data.userId = user.id;
+                generateMembershipData(membership, data, async (errMessage, confirmedMembership) => {
                     if (errMessage) {
                         res.status(400).send(errMessage);
                     } else {
@@ -98,6 +109,15 @@ export const findBetweenWithType = (req, res) => {
     }).catch(err => res.status(400).send(err.message));
 }
 
+export const findBetweenWithTypeTotalValue = (req, res) => {
+    findBetween(req.body.startDate, req.body.endDate).then(memberships => {
+        if (req.body.type) {
+            const filtered = memberships.filter(item => item.__t === getSchemaNameFromType(req.body.type))
+            res.json(filtered.reduce((accumulator, currentItem) => accumulator + currentItem.membership.price, 0))
+        } else res.json(memberships);
+    }).catch(err => res.status(400).send(err.message));
+}
+
 export const findAllSorted = (req, res) => {
     const sortRule = {};
     const requestBody = req.body;
@@ -106,3 +126,22 @@ export const findAllSorted = (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.json(400).send(err.message));
 }
+
+export const findWithUserAndType = (req, res) => {
+    const {userId, type} = req.body;
+    ConfirmedMembership.find({__t: getSchemaFromConfirmedMembershipType(type), user: userId})
+        .then(memberships => res.json(memberships))
+        .catch(err => res.json(400).send(err.message));
+}
+
+export const decreaseQuantity = (req, res) => {
+    const membershipId = req.params.id;
+    ConfirmedMembership.findById(membershipId).then(membership => {
+        membership.leftVisitQuantity = membership.leftVisitQuantity - 1;
+        if(membership.leftVisitQuantity === 0) {
+            ConfirmedMembership.findByIdAndRemove(membershipId).then(() => res.json('membership deleted'))
+        } else res.json(() => 'left visit quantity has been decreased')
+    }).catch(err => res.status(400).send(err.message));
+}
+
+

@@ -5,6 +5,9 @@ const ConfirmedMembershipSchema = new Schema({
     membership: {
         type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Membership'
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true
+    },
     dateFrom: {
         type: Date, required: true
     },
