@@ -1,0 +1,19 @@
+$(document).ready(()=>{
+    let $data =$('.data__wrapper');
+    $('#memberships').click(()=>{
+        $data.innerHTML='';
+        $data.load('../../pages/admin-account/memberships.html');
+    });
+    $('#issued-memberships').click(()=>{
+        $data.innerHTML='';
+        $data.load('../../pages/admin-account/issued-memberships.html');
+    });
+    $('#coaches').click(()=>{
+        $data.innerHTML='';
+        $data.load('../../pages/admin-account/coaches.html');
+    });
+    $('#users').click(()=>{
+        $data.innerHTML='';
+        $data.load('../../pages/admin-account/users.html');
+    })
+})

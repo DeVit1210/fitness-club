@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>LifeFit</title>
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
 <header class="header">
     <div class="wrapper header__wrapper">
         <div class="header__logo">
-            <h2 class="logo__title">LifeFit</h2>
-            <p class="logo__text">Сеть фитнес-клубов в Минске</p>
+            <a href="#" class="link"><h2 class="logo__title"><span>Life</span>Fit</h2></a>
+                <p class="logo__text">Сеть фитнес-клубов в Минске</p>
         </div>
         <nav class="header__navigation">
             <ul class="navigation">
-                <li class="navigation__link">О фитнес-клубе</li>
-                <li class="navigation__link">Услуги</li>
-                <li class="navigation__link">Абонементы</li>
-                <li class="navigation__link">Фото и видео</li>
-                <li class="navigation__link">Контакты</li>
+                <li class="navigation__link"><a href="#" class="link">О фитнес-клубе</a></li>
+                <li class="navigation__link"><a href="#" class="link">Услуги</a></li>
+                <li class="navigation__link"><a href="#" class="link">Абонементы</a></li>
+                <li class="navigation__link"><a href="#" class="link">Фото и видео</a></li>
+                <li class="navigation__link"><a href="#" class="link">Контакты</a></li>
             </ul>
         </nav>
         <div class="header__buttons">
@@ -29,31 +30,105 @@
 <main>
     <section class="promo">
         <div class="wrapper promo__wrapper">
-            <img class="promo__img" src="#">
+            <img class="promo__img" src="../src/promo.jpg">
             <div class="promo__content">
                 <div class="promo__info">
                     <h1 class="promo__title">Фитнес и тренажерный зал</h1>
                     <p class="promo__text">Записаться на первую тренировку бесплатно</p>
                 </div>
-                <button class="button button_colored"></button>
+                <button class="button button_colored">Записаться</button>
             </div>
         </div>
     </section>
     <section class="about-us">
         <div class="wrapper about-us__wrapper">
-            <p class="about-us__info">Цель фитнес-клуба LifeFit - помогать в поддержанииздорового образа жизни и полезной физической активности</p>
+            <p class="about-us__info">Цель фитнес-клуба <span>Life<span>Fit</span></span> - помогать в поддержании здорового образа жизни и полезной физической активности</p>
             <div class="layout-3-column advantages">
                 <div class="about-us__advantage">
-                    <img class="advantage__icon">
+                    <img class="advantage__icon" src="../src/treadmill.png">
                     <p class="advantage__text">Современные и разнообразные тренажеры</p>
                 </div>
                 <div class="about-us__advantage">
-                    <img class="advantage__icon">
-                    <p class="advantage__text">Большой выбор залов для посещения</p>
+                    <img class="advantage__icon" src="../src/traker.png">
+                    <p class="advantage__text">Большой выбор комфортных залов для посещения</p>
                 </div>
                 <div class="about-us__advantage">
-                    <img class="advantage__icon">
+                    <img class="advantage__icon" src="../src/checkmark.png">
                     <p class="advantage__text">Эффективные системы индивидуальных тренировок</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="trainers">
+        <div class="wrapper trainers__wrapper">
+            <h3 class="trainers__title">Тренеры</h3>
+            <div class="trainers__carousel">
+                <div class="arrow-left">
+                    <img src="../src/arrow.png">
+                </div>
+                <div class="carousel__wrapper">
+                    <div class="layout-3-column carousel">
+                        <div class="item-left">
+                            <div class="trainer">
+                                <img src="../src/trainer1.png">
+                                <div class="trainer__content">
+                                    <p class="trainer__name">
+                                        Станислав Лашковский
+                                    </p>
+                                    <p class="trainer__education">
+                                        Образование: высшая категория
+                                    </p>
+                                    <p class="trainer__experience">
+                                        Стаж работы: 6 лет
+                                    </p>
+                                    <p class="trainer__info">
+                                        Дополнительная информация: Разработал большое количество индивидуальных тренировок под тип фигуры
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-active">
+                            <div class="trainer">
+                                <img src="../src/trainer1.png">
+                                <div class="trainer__content">
+                                    <p class="trainer__name">
+                                        Станислав Лашковский
+                                    </p>
+                                    <p class="trainer__education">
+                                        Образование: высшая категория
+                                    </p>
+                                    <p class="trainer__experience">
+                                        Стаж работы: 6 лет
+                                    </p>
+                                    <p class="trainer__info">
+                                        Дополнительная информация: Разработал большое количество индивидуальных тренировок под тип фигуры
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-right">
+                            <div class="trainer">
+                                <img src="../src/trainer1.png">
+                                <div class="trainer__content">
+                                    <p class="trainer__name">
+                                        Станислав Лашковский
+                                    </p>
+                                    <p class="trainer__education">
+                                        Образование: высшая категория
+                                    </p>
+                                    <p class="trainer__experience">
+                                        Стаж работы: 6 лет
+                                    </p>
+                                    <p class="trainer__info">
+                                        Дополнительная информация: Разработал большое количество индивидуальных тренировок под тип фигуры
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arrow-right">
+                    <img src="../src/arrow.png">
                 </div>
             </div>
         </div>
@@ -64,64 +139,70 @@
             <div class="membership">
                 <div class="membership__image">
                     <p class="membership__title">Полный абонемент</p>
-                    <p class="membership__logo">LifeFit</p>
+                    <p class="membership__logo">Life<span>Fit</span></p>
                 </div>
                 <div class="membership__content">
                     <p class="membership__description">Полный абонемент позволяет посещать тренажерный зал в любое время</p>
                     <p class="membership__chosen-text">Выберите период абонемента</p>
-                    <div class="period">1 месяц</div>
-                    <div class="period">3 месяца</div>
-                    <div class="period">6 месяцев</div>
-                    <div class="period">1 год</div>
-                    <div class="membership__cost">
-                        <p class="membership__chosen-text">Стоимость</p>
-                        <p>400 BYN</p>
+                    <button class="button button_colored">1 месяц</button>
+                    <button class="button button_bordered">3 месяца</button>
+                    <button class="button button_bordered">6 месяцев</button>
+                    <button class="button button_bordered">1 год</button>
+                    <div class="membership__order">
+                        <div class="membership__cost">
+                            <p class="membership__chosen-text">Стоимость</p>
+                            <p  class="membership__price">400 BYN</p>
+                        </div>
+                        <button class="button button_colored">
+                            Заказать абонемент
+                        </button>
                     </div>
-                    <button class="button button_colored">
-                        Заказать абонемент
-                    </button>
                 </div>
             </div>
             <div class="membership">
                 <div class="membership__image">
                     <p class="membership__title">Полный абонемент</p>
-                    <p class="membership__logo">LifeFit</p>
+                    <p class="membership__logo">Life<span>Fit</span></p>
                 </div>
                 <div class="membership__content">
                     <p class="membership__description">Полный абонемент позволяет посещать тренажерный зал в любое время</p>
                     <p class="membership__chosen-text">Выберите период абонемента</p>
-                    <div class="period">1 месяц</div>
-                    <div class="period">3 месяца</div>
-                    <div class="period">6 месяцев</div>
-                    <div class="period">1 год</div>
-                    <div class="membership__cost">
-                        <p class="membership__chosen-text">Стоимость</p>
-                        <p>400 BYN</p>
+                    <button class="button button_colored">1 месяц</button>
+                    <button class="button button_bordered">3 месяца</button>
+                    <button class="button button_bordered">6 месяцев</button>
+                    <button class="button button_bordered">1 год</button>
+                    <div class="membership__order">
+                        <div class="membership__cost">
+                            <p class="membership__chosen-text">Стоимость</p>
+                            <p  class="membership__price">400 BYN</p>
+                        </div>
+                        <button class="button button_colored">
+                            Заказать абонемент
+                        </button>
                     </div>
-                    <button class="button button_colored">
-                        Заказать абонемент
-                    </button>
                 </div>
             </div>
             <div class="membership">
                 <div class="membership__image">
                     <p class="membership__title">Полный абонемент</p>
-                    <p class="membership__logo">LifeFit</p>
+                    <p class="membership__logo">Life<span>Fit</span></p>
                 </div>
                 <div class="membership__content">
                     <p class="membership__description">Полный абонемент позволяет посещать тренажерный зал в любое время</p>
                     <p class="membership__chosen-text">Выберите период абонемента</p>
-                    <div class="period">1 месяц</div>
-                    <div class="period">3 месяца</div>
-                    <div class="period">6 месяцев</div>
-                    <div class="period">1 год</div>
-                    <div class="membership__cost">
-                        <p class="membership__chosen-text">Стоимость</p>
-                        <p>400 BYN</p>
+                    <button class="button button_colored">1 месяц</button>
+                    <button class="button button_bordered">3 месяца</button>
+                    <button class="button button_bordered">6 месяцев</button>
+                    <button class="button button_bordered">1 год</button>
+                    <div class="membership__order">
+                        <div class="membership__cost">
+                            <p class="membership__chosen-text">Стоимость</p>
+                            <p class="membership__price">400 BYN</p>
+                        </div>
+                        <button class="button button_colored">
+                            Заказать абонемент
+                        </button>
                     </div>
-                    <button class="button button_colored">
-                        Заказать абонемент
-                    </button>
                 </div>
             </div>
         </div>
@@ -149,10 +230,11 @@
         <div class="wrapper photo__wrapper">
             <h3 class="photo__title">Фотографии клуба</h3>
             <div class="layout-2-column">
-                <img class="photo-img">
-                <img class="photo-img">
+                <img class="photo-img" src="../src/gym-photo.jpg">
+                <img class="photo-img" src="../src/gym-photo.webp">
             </div>
-            <video></video>
+            <video src="../src/fitness.mp4"  autoplay loop controls>
+            </video>
         </div>
     </section>
 </main>
@@ -168,13 +250,13 @@
                 <div class="contact contacts__messengers">
                     <p class="contacts__text">Мессенджеры</p>
                     <div class="messenger__icon">
-                        <img>
+                        <img src="../src/whatsapp-logo_icon-icons.com_57054.png">
                     </div>
                     <div class="messenger__icon">
-                        <img>
+                        <img src="../src/instagram_f_icon-icons.com_65485.png">
                     </div>
                     <div class="messenger__icon">
-                        <img>
+                        <img src="../src/telegram_icon_131945.png">
                     </div>
                 </div>
                 <div class="contact contacts__phone">
@@ -182,18 +264,19 @@
                     <p class="contacts__info">+375 (33) 746-81-12</p>
                 </div>
                 <div class="contact contacts__button">
-                    <button class="button button__colored">
+                    <button class="button button_colored">
                         Заказать звонок
                     </button>
                 </div>
             </div>
-            <div></div>
+            <div class="map" style="position:relative;overflow:hidden;"><a href="https://yandex.by/maps/157/minsk/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Минск</a><a href="https://yandex.by/maps/157/minsk/house/Zk4YcANiSUIPQFtpfXVyd3hhZw==/?ll=27.643992%2C53.936006&utm_medium=mapframe&utm_source=maps&z=15.73" style="color:#eee;font-size:12px;position:absolute;top:14px;">Проспект Независимости, 123 — Яндекс Карты</a><iframe src="https://yandex.by/map-widget/v1/?ll=27.643992%2C53.936006&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg2NjY3MzQ4ORJM0JHQtdC70LDRgNGD0YHRjCwg0JzRltC90YHQuiwg0L_RgNCw0YHQv9C10LrRgiDQndC10LfQsNC70LXQttC90LDRgdGG0ZYsIDEyMyIKDfsi3UEV5b5XQg%2C%2C&z=15.73" width="100%" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
         </div>
         <div class="footer__logo">
             <h2 class="logo__title">LifeFit</h2>
             <p class="logo__text">Сеть фитнес-клубов в Минске</p>
         </div>
     </div>
+    <script src="../functions/carousel.js"></script>
 </footer>
 </body>
 </html>

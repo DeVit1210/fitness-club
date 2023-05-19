@@ -1,0 +1,557 @@
+/*base*/
+
+html{
+    font-size: 10px;
+}
+*{
+    font-size: 1.5rem;
+    font-family: Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    max-width: 1280px;
+    margin:auto;
+}
+h1{
+    font-size: 5.2rem;
+}
+h2, h2>*{
+    font-size: 4rem;
+    font-weight: 600;
+}
+h3{
+    font-size: 4.4rem;
+    font-weight: 600;
+}
+.link{
+    text-decoration: none;
+    color:#000000;
+}
+.button {
+    padding: 11px 25px 13px;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .3s;
+    border: 1px solid #cbf553;
+}
+.button:hover{
+    cursor: pointer;
+}
+.button_colored{
+    background-color: #cbf553;
+    border: none;
+}
+.button_colored:active{
+    background-color: transparent;
+    border: 1px solid #cbf553;
+}
+.button_bordered{
+    background-color: transparent;
+}
+.button_bordered:active{
+    background-color: #cbf553;
+    border: none;
+}
+
+/*header block*/
+.header{
+    padding: 30px 0;
+
+}
+.header__wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo__title, .logo__title>*{
+    color: #cbf553;
+    font-style: italic;
+    text-align: center;
+}
+.logo__title span{
+    color: #000000;
+}
+.logo__text{
+    font-size: 1.2rem;
+}
+.navigation{
+    font-size: 1.5rem;
+    line-height: 2.8rem;
+}
+.navigation__link{
+    display:inline;
+    list-style: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.header__buttons{
+    display: flex;
+    gap:20px;
+}
+
+/*promo block*/
+.promo__wrapper{
+    border-radius: 20px;
+    overflow: hidden;
+}
+.promo__content{
+    margin-top: -10px;
+    background-color: black;
+    padding: 65px;
+    display: flex;
+    justify-content: space-between;
+}
+.promo__img{
+    width: 100%;
+}
+
+.promo__content .button{
+    font-size: 2.2rem;
+    font-weight: bold;
+    width:30%;
+}
+
+.promo__title{
+    color:#cbf553;
+ }
+.promo__text{
+    color:white;
+    font-size: 2.8rem;
+}
+
+
+/*about-us*/
+.about-us{
+    margin-top: 50px;
+}
+
+.about-us__wrapper{
+    background-color: #f1f1f1;
+    padding: 100px 0 50px;
+    border-radius: 20px;
+}
+.about-us__info{
+    font-size: 2.8rem;
+    text-align: center;
+    width:75%;
+    margin: 0 auto 60px;
+    line-height: 4rem;
+}
+.about-us__info *{
+    font-size: 2.8rem;
+    font-weight: 600;
+    font-style: italic;
+}
+.about-us__info span span{
+    color:#cbf553;
+}
+.about-us__advantage{
+    background-color: #cbf553;
+    border-radius: 20px;
+    flex-basis: 23%;
+    padding: 50px 30px;
+    font-size: 2rem;
+}
+.layout-3-column{
+    display: flex;
+    justify-content: space-around;
+
+}
+.advantage__text{
+    margin: 20px 0 0;
+    font-size: 2rem;
+}
+
+
+/*memberships*/
+.memberships{
+    margin-top: 40px;
+    padding: 60px;
+    background-color: #f1f1f1;
+}
+.memberships__title{
+    margin-bottom: 40px;
+}
+
+.membership{
+    background-color: #ffffff;
+    border-radius: 40px;
+    padding: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    gap:30px;
+}
+.membership__image{
+    background-color: #000000;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    width:30%;
+    position: relative;
+}
+.membership__title{
+    color: #cbf553;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.membership__logo{
+    color:#ffffff;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 4rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: end;
+}
+.membership__logo span{
+    color:#cbf553;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 4rem;
+}
+.membership__description{
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    margin-bottom: 20px;
+}
+.membership__chosen-text{
+    font-size: 1.2rem;
+    color:#c6c6c6;
+}
+.membership .button{
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.membership__order{
+    display: flex;
+    gap:20px;
+}
+
+.membership__price{
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+
+/*free-train*/
+.free-train{
+    padding: 70px 0;
+}
+.free-train__wrapper{
+    background-color: black;
+    border-radius: 40px;
+    padding: 90px;
+}
+.layout-2-column{
+    display: flex;
+    justify-content: space-between;
+}
+.free-train__content{
+    flex-basis: 50%;
+}
+.free-train__title{
+    color:#cbf553;
+    margin-bottom: 30px;
+}
+.free-train__info{
+    color:#ffffff;
+    font-size: 2.2rem;
+}
+.free-train__input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    display: block;
+    width: 400px;
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+}
+.free-train__form button{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 20px 40px;
+    margin-top: 50px;
+}
+
+
+/*photo*/
+.photo__wrapper{
+    border: 3px solid #cbf553;
+    border-radius: 40px;
+    padding: 20px;
+    margin-bottom: 70px;
+}
+.photo__title{
+    margin-bottom: 40px;
+}
+.photo-img{
+    width: 49%;
+}
+video{
+    width: 60%;
+    display: block;
+    margin: 30px auto;
+}
+
+
+/*footer*/
+.footer{
+    background-color: black;
+}
+.contacts__title{
+    color:#cbf553;
+    margin-bottom: 50px;
+}
+.footer__contacts{
+    padding: 50px 0;
+}
+.layout-4-column{
+    display:flex;
+    justify-content: space-between;
+}
+.contacts__text{
+    color:#c6c6c6;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.contacts__info{
+    color:#ffffff;
+    font-size: 2.2rem;
+}
+.messenger__icon{
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.contact button{
+    font-size: 2rem;
+    font-weight: 500;
+    height: 60px;
+}
+.map{
+    border-radius: 40px;
+    margin-top: 50px;
+}
+.arrow-right{
+    transform: rotate(180deg);
+}
+
+
+/*trainers*/
+.trainers{
+    margin-top: 100px;
+}
+.trainers .layout-3-column{
+    gap:0;
+    flex-direction: row;
+}
+.trainers__title{
+    margin-bottom: 50px;
+}
+.trainers__carousel{
+    display: flex;
+    align-items: center;
+}
+.trainer{
+    display: flex;
+    justify-content: space-between;
+    width: 1190px;
+}
+.trainer img{
+    flex-basis: 40%;
+}
+.trainer__content{
+    border: 3px solid #cbf553;
+    border-radius: 30px;
+    padding: 30px;
+    flex-basis: 50%;
+}
+.trainer__content>*{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.trainer__name{
+    font-size: 3rem;
+    font-style: oblique;
+    font-weight: 600;
+
+}
+.carousel__wrapper{
+    width: 1200px;
+    overflow: hidden;
+}
+
+.carousel{
+    position: relative;
+    left:-1200px;
+
+}
+@keyframes move-right{
+    from {left: -1200px}
+    to {left: -2400px;}
+}
+
+.transition-right{
+    animation-name: move-right;
+    animation-duration: 5s;
+}
+
+@keyframes move-left{
+    from {left: -1200px}
+    to {left: 0;}
+}
+
+.transition-left{
+    animation-name: move-left;
+    animation-duration: 5s;
+}
+
+
+/*admin*/
+.admin-account{
+    display: flex;
+    flex-direction: row;
+}
+.account-navigation{
+    flex-basis: 30%;
+    background-color: #cbf553;
+    max-height: 100%;
+    padding: 150px 50px;
+}
+.account-navigation__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:40px;
+}
+.account-navigation .navigation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.account-navigation .navigation__link{
+    font-size: 2.2rem;
+    font-style: oblique;
+    margin-bottom: 40px;
+}
+.avatar{
+    width: 120px;
+}
+.admin__data{
+    flex-basis: 70%;
+}
+.data__wrapper{
+    padding: 70px 80px;
+}
+.account__title{
+    margin: 30px auto 30px;
+}
+select{
+    padding: 10px;
+    border: 2px solid #cbf553;
+    border-radius: 5px;
+    background-color: transparent;
+}
+thead{
+    background-color: #cbf553;
+}
+th, td{
+    padding: 15px;
+    border-radius: 5px;
+}
+label{
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+.memberships__filter-form .button{
+    margin-left: 50px;
+}
+.memberships__filter-form{
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+input{
+    background-color: transparent;
+    border: 2px solid #cbf553;
+    border-radius: 5px;
+    padding: 10px;
+}
+.memberships__add-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.issued-memberships__filter-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+}
+.issued-memberships__filter-form label{
+    font-size: 1.5rem;
+}
+.total-income{
+    background-color: #cbf553;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 40px;
+    border: 2px solid #000000;
+}
+.total-income__title{
+    font-size: 3rem;
+    font-weight: 600;
+    font-style: oblique;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.total-income__value{
+    font-size: 2.6rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.total-income__value:before{
+    content:url('../src/money.png')
+}
+.total-income__value:after{
+    content:url('../src/money.png');
+}
+.coaches__sort-info{
+    font-size: 1.8rem;
+    color: #cbf553;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.49);
+    margin-bottom: 40px;
+}
+.coaches__sort-form{
+    margin-bottom: 40px;
+}
+.check-message{
+    margin: 30px auto;
+    padding: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+.active{
+    background-color: rgba(173, 255, 47, 0.57);
+}
+.inactive{
+    background-color: rgba(255, 0, 0, 0.51);
+}
