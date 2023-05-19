@@ -46,18 +46,37 @@ membershipAddForm.addEventListener('submit', () => {
 
 const membershipUpdateForm = document.querySelector('.memberships__edit-form');
 const membershipIdToUpdate = membershipUpdateForm.querySelector('#edit-membersip__id');
+membershipIdToUpdate.addEventListener('change', () => {
+    $.ajax({
+        url: "http://localhost:8080/membership/" + membershipIdToUpdate.value,
+        type: "GET",
+        success: (membership) => {
+            document.getElementById('edit-membersip__name').value = membership.name,
+            document.getElementById('edit-membersip__price').value = membership.price
+        },
+        error: () => alert("id указан неверно!")
+    })
+})
 membershipUpdateForm.addEventListener('submit', (event) => {
     event.preventDefault();
     $.ajax({
-        url: "http://localhost:8080/membership/add/" + document.getElementById('add-membersip__type').value,
-        type: "POST",
+        url: "http://localhost:8080/membership/" + membershipIdToUpdate.value,
+        type: "PUT",
         contentType: "application/json",
         data: JSON.stringify({
-            name: document.getElementById('add-membersip__name').value,
-            price: document.getElementById('add-membersip__price').value,
+            name: document.getElementById('edit-membersip__name').value,
+            price: document.getElementById('edit-membersip__price').value,
         }),
         success: () => alert("Редактирование абонемента выполнено успешно!"),
         error: () => alert("Ошибка редактирования абонемента")
+    })
+})
+
+document.querySelector('.memberships__del-form').addEventListener('submit', () => {
+    $.ajax({
+        url: "http://localhost:8080/membership/" + document.getElementById('del-membersip__id').value,
+        type: "DELETE",
+        success: () => alert('Данные об абонементе успешно удалены!')
     })
 })
 
