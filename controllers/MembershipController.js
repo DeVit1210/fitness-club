@@ -22,6 +22,7 @@ export const findByType = (req, res) => {
 
 export const add = (req, res) => {
     const type = req.params.type;
+    console.log(type);
     switch (type) {
         case "period": {
             const periodMembership = new PeriodMembership(req.body);

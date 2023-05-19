@@ -9,43 +9,9 @@
     </label>
     <button class="button button_colored">Отфильтровать</button>
 </form>
-<table>
-    <thead>
-    <tr>
-        <th>
-            id
-        </th>
-        <th>
-            Тип абонемента
-        </th>
-        <th>
-            Стоимость
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    </tbody>
-</table>
+<div id="table-container"></div>
 <h3 class="account__title">Добавление нового абонемента</h3>
 <form class="memberships__add-form">
-    <label for="add-membersip__id">ID:
-        <input id="add-membersip__id" name="id">
-    </label>
     <label for="add-membersip__name">Название абонемента:
         <input id="add-membersip__name" name="name">
     </label>
@@ -55,7 +21,14 @@
     <label for="add-membersip__info">Описание абонемента:
         <input id="add-membersip__info" name="info">
     </label>
-    <button class="button button_colored">Добавить</button>
+    <label for="add-membersip__type">Описание абонемента:
+        <select id="add-membersip__type">
+            <option>Безлимитный</option>
+            <option>С тренером</option>
+            <option>Ограниченный</option>
+        </select>
+    </label>
+    <button type="submit" class="button button_colored">Добавить</button>
 </form>
 <h3 class="account__title">Редактирование информации об абонементе</h3>
 <form class="memberships__edit-form">
@@ -80,3 +53,5 @@
     </label>
     <button class="button button_colored">Удалить</button>
 </form>
+<script src="../../functions/table-builder.js"></script>
+<script src="../../functions/membership-management.js"></script>
