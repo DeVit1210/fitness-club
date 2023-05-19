@@ -55,6 +55,8 @@ function generateMembershipData(membership, data, callback) {
 
 export const findAll = (req, res) => {
     ConfirmedMembership.find()
+        .populate({path: 'user', select: "surname name"})
+        .populate({path: 'membership', select: "name price"})
         .then(response => res.json(response))
         .catch(err => res.json(400).send(err.message));
 }
