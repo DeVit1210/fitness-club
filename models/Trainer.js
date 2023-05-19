@@ -18,6 +18,9 @@ const TrainerSchema = new Schema({
     additionalInformation: {
         type: String, required: true
     },
+    clientQuantity: {
+        type: Number, required: true
+    },
     schedule: {
         type: ScheduleSchema
     }

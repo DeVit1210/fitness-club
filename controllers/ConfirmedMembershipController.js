@@ -7,6 +7,7 @@ import {
 import {getSchemaNameFromType} from "./MembershipController.js";
 import {Membership, PeriodMembership, PersonalTrainerMembership, VisitMembership} from "../models/Membership.js";
 import {User} from "../models/User.js";
+import {Trainer} from "../models/Trainer.js";
 import {checkAuthentication} from "./UserController.js";
 
 function getMembershipType(membership){
@@ -47,6 +48,7 @@ function generateMembershipData(membership, data, callback) {
         }
         case 'trainer': {
             membershipData.trainer = data.trainer;
+            Trainer.findByIdAndUpdate(data.trainer, {$inc: {clientQuantity: 1}})
             callback(null, new ConfirmedPersonalTrainerMembership(membershipData)); break;
         }
         default: callback('wrong membership type', null);

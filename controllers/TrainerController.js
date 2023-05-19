@@ -22,6 +22,25 @@ export const add = (req, res) => {
         .catch(err => res.status(400).send(err.message));
 }
 
+export const findDecreaseSort = (req, res) => {
+    Trainer.find().sort({clientQuantity: -1})
+        .then(response => res.json(response))
+        .catch(err => res.status(400).send(err.message))
+}
+
+export const findIncreaseSort = (req, res) => {
+    Trainer.find().sort({clientQuantity: 1})
+        .then(response => res.json(response))
+        .catch(err => res.status(400).send(err.message))
+}
+
+export const update = (req, res) => {
+    Trainer.findByIdAndUpdate(req.params.id, req.body)
+        .then(response => res.json(response))
+        .catch(err => res.status(400).send(err.message))
+}
+
+
 /////////////////////////////////////////////////////////////////////////
 
 class PeriodData {
