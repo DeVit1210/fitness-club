@@ -42,23 +42,23 @@ document.querySelector('.coaches__sort-form #coaches__increasing').addEventListe
     })
 })
 
-document.querySelector('.coach__add-form').addEventListener('submit', () => {
-    $.ajax({
-        url: "http://localhost:8080/trainer/add",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({
-            surname: document.getElementById('add-coach__surname').value,
-            name: document.getElementById('add-coach__name').value,
-            education: document.getElementById('add-coach__education').value,
-            experience: document.getElementById('add-coach__experience').value,
-            additionalInformation: document.getElementById('add-coach__info').value,
-            clientQuantity: 0
-        }),
-        success: () => alert('Тренер успешно добавлен!'),
-        error: () => alert('Тренер успешно удален!')
-    })
-})
+// document.querySelector('.coach__add-form').addEventListener('submit', () => {
+//     $.ajax({
+//         url: "http://localhost:8080/trainer/add",
+//         type: "POST",
+//         contentType: "application/json",
+//         data: JSON.stringify({
+//             surname: document.getElementById('add-coach__surname').value,
+//             name: document.getElementById('add-coach__name').value,
+//             education: document.getElementById('add-coach__education').value,
+//             experience: document.getElementById('add-coach__experience').value,
+//             additionalInformation: document.getElementById('add-coach__info').value,
+//             clientQuantity: 0
+//         }),
+//         success: () => alert('Тренер успешно добавлен!'),
+//         error: () => alert('Тренер успешно удален!')
+//     })
+// })
 
 const editCoachId = document.querySelector('#edit-coach__id');
 editCoachId.addEventListener('change', () => {

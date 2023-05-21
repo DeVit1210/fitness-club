@@ -17,6 +17,10 @@ export const destroy = (req, res) => {
 }
 
 export const add = (req, res) => {
+    const trainerData = req.body;
+    if(req.files) {
+        trainerData.photo = req.files[0].path;
+    }
     Trainer.create(req.body)
         .then(() => res.json("trainer successfully added!"))
         .catch(err => res.status(400).send(err.message));
