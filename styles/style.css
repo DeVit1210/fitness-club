@@ -52,7 +52,7 @@ h3{
     border: 1px solid #cbf553;
 }
 .button_bordered{
-    background-color: transparent;
+    background-color: #ffffff;
 }
 .button_bordered:active{
     background-color: #cbf553;
@@ -596,4 +596,108 @@ input{
     gap:20px;
     justify-content: flex-start;
     align-items: center;
+}
+
+
+
+/*popup*/
+.membership__popupbg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s all;
+    z-index: 10;
+}
+
+.membership__popupbg.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s all;
+}
+
+.membership__popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 900px;
+    transition: 0.5s all;
+    padding: 70px 40px;
+}
+.membership__popup .layout-2-column{
+    align-items: center;
+}
+.cross{
+    position: absolute;
+    top:2%;
+    right: 2%;
+}
+
+.membership__popup.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0.5s all;
+    background-color: #cbf553;
+}
+.popup__content *, .membership__order *{
+    color: black;
+}
+.popup__content{
+    padding: 20px;
+    border-radius: 30px;
+    height: 350px;
+    overflow-y: scroll;
+    background-color: rgba(241, 241, 241, 0.52);
+}
+.popup__content::-webkit-scrollbar {
+    width: 7px;
+}
+
+.popup__content::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+.popup__content::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
+}
+.membership__popup .membership__image{
+    height: 200px;
+    width: 370px;
+}
+.membership__popup .membership__title{
+    margin-bottom: 30px;
+}
+.membership__popup label{
+    margin-bottom: 10px;
+}
+.membership__popup .layout-2-column{
+    align-items: center;
+    gap:30px;
+}
+.membership__popup input, .membership__popup select{
+    border: 2px solid #000000;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+}
+.membership__popup .button_bordered{
+    border:2px solid #000000;
+}
+.popup__info{
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+}
+.membership__chosen-trainer{
+    border: 2px solid #ffffff;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.membership__chosen-trainer.chosen{
+    border: 2px solid #000000;
 }
