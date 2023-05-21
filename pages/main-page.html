@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>LifeFit</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -144,14 +145,11 @@
                 <div class="membership__content">
                     <p class="membership__description">Полный абонемент позволяет посещать тренажерный зал в любое время</p>
                     <p class="membership__chosen-text">Выберите период абонемента</p>
-                    <button class="button button_colored">1 месяц</button>
-                    <button class="button button_bordered">3 месяца</button>
-                    <button class="button button_bordered">6 месяцев</button>
-                    <button class="button button_bordered">1 год</button>
+                    <div class="membership__button-container" id="visit_quantity_button_container"></div>
                     <div class="membership__order">
                         <div class="membership__cost">
                             <p class="membership__chosen-text">Стоимость</p>
-                            <p  class="membership__price">400 BYN</p>
+                            <p  class="membership__price"></p>
                         </div>
                         <button class="button button_colored">
                             Заказать абонемент
@@ -167,14 +165,11 @@
                 <div class="membership__content">
                     <p class="membership__description">Полный абонемент позволяет посещать тренажерный зал в любое время</p>
                     <p class="membership__chosen-text">Выберите период абонемента</p>
-                    <button class="button button_colored">1 месяц</button>
-                    <button class="button button_bordered">3 месяца</button>
-                    <button class="button button_bordered">6 месяцев</button>
-                    <button class="button button_bordered">1 год</button>
+                    <div class="membership__button-container" id="period_button_container"></div>
                     <div class="membership__order">
                         <div class="membership__cost">
                             <p class="membership__chosen-text">Стоимость</p>
-                            <p  class="membership__price">400 BYN</p>
+                            <p  class="membership__price"></p>
                         </div>
                         <button class="button button_colored">
                             Заказать абонемент
@@ -190,14 +185,11 @@
                 <div class="membership__content">
                     <p class="membership__description">Полный абонемент позволяет посещать тренажерный зал в любое время</p>
                     <p class="membership__chosen-text">Выберите период абонемента</p>
-                    <button class="button button_colored">1 месяц</button>
-                    <button class="button button_bordered">3 месяца</button>
-                    <button class="button button_bordered">6 месяцев</button>
-                    <button class="button button_bordered">1 год</button>
+                    <div class="membership__button-container" id="trainer_button_container"></div>
                     <div class="membership__order">
                         <div class="membership__cost">
                             <p class="membership__chosen-text">Стоимость</p>
-                            <p class="membership__price">400 BYN</p>
+                            <p class="membership__price"></p>
                         </div>
                         <button class="button button_colored">
                             Заказать абонемент
@@ -276,7 +268,9 @@
             <p class="logo__text">Сеть фитнес-клубов в Минске</p>
         </div>
     </div>
+    <script src="../functions/trainer-load.js"></script>
     <script src="../functions/carousel.js"></script>
+    <script src="../functions/memberships-load.js"></script>
 </footer>
 </body>
 </html>

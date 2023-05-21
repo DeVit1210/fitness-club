@@ -21,6 +21,9 @@ const TrainerSchema = new Schema({
     clientQuantity: {
         type: Number, required: true
     },
+    photo: {
+        type: String
+    },
     schedule: {
         type: ScheduleSchema
     }
