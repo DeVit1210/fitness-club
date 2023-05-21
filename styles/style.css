@@ -701,3 +701,13 @@ input{
 .membership__chosen-trainer.chosen{
     border: 2px solid #000000;
 }
+.data__wrapper .membership__image{
+    width: 350px;
+    height: 200px;
+}
+.data__wrapper .membership__content *{
+    font-size: 1.8rem;
+}
+.memberships__filter-form select{
+    margin-top: 20px;
+}
