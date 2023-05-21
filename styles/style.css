@@ -558,41 +558,41 @@ input{
 
 
 
-/*authorization*/
-.authorization{
-}
-.authorization__wrapper{
+/*authorization-registration*/
+
+.authorization__wrapper, .registration__wrapper{
     display: flex;
+    align-items: center;
 }
-.authorization__img{
+.authorization__img, .registration__img{
     max-width: 50%;
 }
-.authorization__form{
-    padding: 100px 0 0 120px;
+.authorization__form, .registration__form{
+    padding: 80px 0 80px 120px;
     flex-basis: 50%;
     background-color: #000000;
     border-radius: 40px;
     margin: 50px 0;
 }
-.authorization__form input{
+.authorization__form input, .registration__form input{
     width: 80%;
     margin-bottom: 50px;
     color:#ffffff;
 }
-.authorization__form label{
+.authorization__form label, .registration__form label{
     font-size: 2.4rem;
     font-style: oblique;
     color:#ffffff;
 }
-.authorization__form .button{
+.authorization__form .button, .registration__form .button{
     font-size: 2rem;
     padding: 20px 40px;
 
 }
-.registration-offer a{
+.registration-offer a, .authorization-offer a{
     color:#ffffff;
 }
-.authorization__form .layout-2-column{
+.authorization__form .layout-2-column, .registration__form .layout-2-column{
     gap:20px;
     justify-content: flex-start;
     align-items: center;
