@@ -48,9 +48,10 @@ export const update = (req, res) => {
 /////////////////////////////////////////////////////////////////////////
 
 class PeriodData {
-    constructor(trainerId, trainerFullName, timePeriod, days) {
+    constructor(trainerId, trainerFullName, trainerAddress, timePeriod, days) {
         this.trainerId = trainerId;
         this.trainerFullName = trainerFullName;
+        this.trainerAddress = trainerAddress;
         this.timePeriod = timePeriod;
         this.days = days;
     }
@@ -82,6 +83,7 @@ function getPeriods(isFree, callback) {
                     freePeriods.push(new PeriodData(
                         trainer._id,
                         trainer.surname + " " + trainer.name,
+                        trainer.address,
                         value,
                         getShortcutsString(workingDays.map(day => day.name))
                     ));

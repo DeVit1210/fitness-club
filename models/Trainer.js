@@ -24,6 +24,9 @@ const TrainerSchema = new Schema({
     photo: {
         type: String
     },
+    address: {
+        type: String, required: true
+    },
     schedule: {
         type: ScheduleSchema
     }
