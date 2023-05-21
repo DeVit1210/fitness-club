@@ -16,5 +16,13 @@ $.ajax({
             buildTrainerInfo(period, (info) => trainerInfoContainer.textContent = info);
             popupContent.appendChild(trainerInfoContainer);
         })
+        const trainerInfoList = popupContent.querySelectorAll('.membership__chosen-trainer');
+        trainerInfoList.forEach(chosenTrainer => {
+            chosenTrainer.addEventListener('click', (event) => {
+                event.preventDefault();
+                trainerInfoList.forEach(elem => elem.classList.remove('active'));
+                chosenTrainer.classList.add('active');
+            })
+        })
     }
 })

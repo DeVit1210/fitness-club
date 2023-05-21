@@ -1,8 +1,6 @@
 import {User} from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import {getSchemaFromConfirmedMembershipType} from "./ConfirmedMembershipController.js";
-
 export const jwtSecret = "rysykevich_ekaterina_jwt"
 export async function checkAuthentication(jwtToken, callback) {
     if (jwtToken) {
@@ -15,9 +13,8 @@ export async function checkAuthentication(jwtToken, callback) {
     } else {
         callback(null, "not authorized");
     }
+    callback('')
 }
-
-
 export async function checkAuthorization(username, password, callback) {
     if(username === "admin@gmail.com" && password === "admin") {
         callback("admin", null);
@@ -31,7 +28,6 @@ export async function checkAuthorization(username, password, callback) {
         callback(jwt.sign({id: user._id, username: user.username}, jwtSecret), null);
     } else callback(null, "wrong password");
 }
-
 export const register = async (req, res) => {
     const userData = req.body;
     userData.password = await bcrypt.hash(req.body.password, 10);
@@ -39,7 +35,6 @@ export const register = async (req, res) => {
         .then(response => res.status(200).send("user created successfully"))
         .catch(err => res.status(500).send(err.message));
 }
-
 export const login = async (req, res) => {
     const {username, password} = req.body;
     await checkAuthorization(username, password, (token, errMessage) => {
@@ -48,7 +43,6 @@ export const login = async (req, res) => {
         } else res.json({token: token})
     })
 }
-
 // const changePassword = async (req, res, next) => {
 //     const {newPassword, token} = req.body;
 //     try {
@@ -64,11 +58,9 @@ export const login = async (req, res) => {
 //         res.json({message: "invalid access attempt!"})
 //     }
 // }
-
 export const findAll =  async (req, res) => {
     res.json(await User.find());
 }
-
 export const findByUsername = async (req, res) => {
     const token = req.headers.authorization;
     await checkAuthentication(token, (user, errMessage) => {
@@ -79,7 +71,6 @@ export const findByUsername = async (req, res) => {
             .catch(err => res.status(400).send(err.message))
     })
 }
-
 export const update = async (req, res) => {
     const token = req.headers.authorization;
     await checkAuthentication(token, (user, errMessage) => {
@@ -90,7 +81,6 @@ export const update = async (req, res) => {
             .catch(err => res.status(400).send(err.message))
     })
 }
-
 export const findMemberships = async (req, res) => {
     const token = req.headers.authorization;
     await checkAuthentication(token, (user, errMessage) => {
@@ -101,7 +91,6 @@ export const findMemberships = async (req, res) => {
             .catch(err => res.status(400).send(err.message))
     })
 }
-
 export const findMembershipsWithStatus= async (req, res) => {
     const token = req.headers.authorization;
     await checkAuthentication(token, (user, errMessage) => {
@@ -115,6 +104,3 @@ export const findMembershipsWithStatus= async (req, res) => {
             }).catch(err => res.status(400).send(err.message))
     })
 }
-
-
-
