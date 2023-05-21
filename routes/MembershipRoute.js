@@ -1,6 +1,5 @@
 import {findAll, add, findById, findByType, update, destroy} from "../controllers/MembershipController.js";
 import express from "express";
-import {Membership} from "../models/Membership.js";
 export const MembershipRoute = express.Router();
 
 MembershipRoute.post("/add/:type", add);

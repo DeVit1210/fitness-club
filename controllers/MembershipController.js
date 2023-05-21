@@ -1,6 +1,6 @@
 import {Membership, PeriodMembership, PersonalTrainerMembership, VisitMembership} from "../models/Membership.js";
 
-function getSchemaNameFromType(type) {
+export function getSchemaNameFromType(type) {
     switch (type) {
         case "visit": return "VisitMembership";
         case "period": return "PeriodMembership"
@@ -22,6 +22,7 @@ export const findByType = (req, res) => {
 
 export const add = (req, res) => {
     const type = req.params.type;
+    console.log(type);
     switch (type) {
         case "period": {
             const periodMembership = new PeriodMembership(req.body);

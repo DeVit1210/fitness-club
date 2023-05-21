@@ -1,51 +1,23 @@
 <h3 class="account__title">Тренеры</h3>
 <p class="coaches__sort-info">Для получения информации об эффективности деятельности каждого из тренеров можно отсортировать данные о них по количеству проданных абонементов</p>
 <form class="coaches__sort-form">
-    <button class="button button_colored">По убыванию</button>
-    <button class="button button_colored">По возрастанию</button>
+    <button class="button button_colored" id="coaches__decreasing">По убыванию</button>
+    <button class="button button_colored" id="coaches__increasing">По возрастанию</button>
 </form>
-<table>
-    <thead>
-    <tr>
-        <th>
-            id
-        </th>
-        <th>
-            Тип абонемента
-        </th>
-        <th>
-            Стоимость
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    </tbody>
-</table>
+<div id="table-container"></div>
 <h3 class="account__title">Добавление нового тренера</h3>
 <form class="coach__add-form">
-    <label for="add-coach__id">ID:
-        <input id="add-coach__id" name="id">
+    <label for="add-coach__surname">Фамилия:
+        <input id="add-coach__surname" name="name">
     </label>
-    <label for="add-coach__name">ФИО:
+    <label for="add-coach__name">Имя:
         <input id="add-coach__name" name="name">
     </label>
-    <label for="add-coach__price">Образование:
-        <input id="add-coach__price" name="education">
+    <label for="add-coach__education">Образование:
+        <input id="add-coach__education" name="education">
+    </label>
+    <label for="add-coach__experience">Опыт работы (кол-во лет):
+        <input id="add-coach__experience" name="education">
     </label>
     <label for="add-coach__info">Дополнительная информация:
         <input id="add-coach__info" name="info">
@@ -57,11 +29,17 @@
     <label for="edit-coach__id">ID:
         <input id="edit-coach__id" name="id">
     </label>
-    <label for="edit-coach__name">ФИО:
+    <label for="edit-coach__surname">Фамилия:
+        <input id="edit-coach__surname" name="name">
+    </label>
+    <label for="edit-coach__name">Имя:
         <input id="edit-coach__name" name="name">
     </label>
-    <label for="edit-coach__price">Образование:
-        <input id="edit-coach__price" name="education">
+    <label for="edit-coach__education">Образование:
+        <input id="edit-coach__education" name="education">
+    </label>
+    <label for="edit-coach__experience">Опыт работы (кол-во лет):
+        <input id="edit-coach__experience" name="education">
     </label>
     <label for="edit-coach__info">Дополнительная информация:
         <input id="edit-coach__info" name="info">
@@ -75,3 +53,4 @@
     </label>
     <button class="button button_colored">Удалить</button>
 </form>
+<script src="../../functions/coaches-management.js"></script>

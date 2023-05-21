@@ -8,54 +8,16 @@
         </select>
     </label>
     <label for="memberships-select__start-date">Дата начала:
-        <select id="memberships-select__start-date">
-            <option>Безлимитный</option>
-            <option>С тренером</option>
-            <option>Ограниченный</option>
-        </select>
+        <input id="memberships-select__start-date" class="date_input">
     </label>
     <label for="memberships-select__end-date">Дата окончания:
-        <select id="memberships-select__end-date">
-            <option>Безлимитный</option>
-            <option>С тренером</option>
-            <option>Ограниченный</option>
-        </select>
+        <input id="memberships-select__end-date" class="date_input">
     </label>
     <button class="button button_colored">Отфильтровать</button>
 </form>
-<table>
-    <thead>
-    <tr>
-        <th>
-            id
-        </th>
-        <th>
-            Тип абонемента
-        </th>
-        <th>
-            Стоимость
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    <tr>
-        <td>2345</td>
-        <td>Безлимитный с тренером</td>
-        <td>300 BYN</td>
-    </tr>
-    </tbody>
-</table>
+<div id="table-container"></div>
 <div class="total-income">
     <p class="total-income__title">Итоговый доход</p>
-    <p class="total-income__value">3450 BYN</p>
+    <p class="total-income__value"></p>
 </div>
+<script src="../../functions/confirmed-membership-management.js"></script>
