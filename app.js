@@ -7,8 +7,10 @@ import {MembershipRoute} from "./routes/MembershipRoute.js";
 import {ConfirmedMembershipRoute} from "./routes/ConfirmedMembershipRoute.js";
 import {ScheduleRoute} from "./routes/ScheduleRoute.js";
 import {TrainerRoute} from "./routes/TrainerRoute.js";
+import {ConsultationRoute} from "./routes/ConsultationRoute.js";
 
 import mongoose from "mongoose";
+import {Consultation} from "./models/Consultation.js";
 mongoose.connect('mongodb://127.0.0.1:27017/fitness-club-db');
 const db = mongoose.connection;
 db.on('error', (err) => {
@@ -28,6 +30,7 @@ app.use('/membership', MembershipRoute)
 app.use('/confirmed-membership', ConfirmedMembershipRoute);
 app.use('/schedule', ScheduleRoute)
 app.use('/trainer', TrainerRoute)
+app.use('/consultation', ConsultationRoute)
 
 app.listen(8080, () => {
     console.log("Server is on!")

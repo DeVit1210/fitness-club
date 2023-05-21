@@ -199,7 +199,7 @@
             </div>
         </div>
     </section>
-    <section class="free-train">
+    <section class="free-train" id="free-train">
         <div class="wrapper free-train__wrapper">
             <div class="layout-2-column">
                 <div class="free-train__content">
@@ -208,10 +208,10 @@
                 </div>
                 <form class="free-train__form">
                     <label>
-                        <input class="free-train__input" placeholder="Ваше имя" name="name">
+                        <input class="free-train__input" id="name" placeholder="Ваше имя" name="name">
                     </label>
                     <label>
-                        <input class="free-train__input" placeholder="Ваш телефон" name="tel">
+                        <input class="free-train__input" id="phoneNumber" placeholder="Ваш телефон" name="tel">
                     </label>
                     <button class="button button_colored">Записаться</button>
                 </form>
@@ -225,7 +225,7 @@
                 <img class="photo-img" src="../src/gym-photo.jpg">
                 <img class="photo-img" src="../src/gym-photo.webp">
             </div>
-            <video src="../src/fitness.mp4"  autoplay loop controls>
+            <video src="../src/fitness.mp4" autoplay loop controls>
             </video>
         </div>
     </section>
@@ -271,6 +271,7 @@
     <script src="../functions/trainer-load.js"></script>
     <script src="../functions/carousel.js"></script>
     <script src="../functions/memberships-load.js"></script>
+    <script src="../functions/consultation.js"></script>
 </footer>
 </body>
 </html>
