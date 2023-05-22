@@ -41,6 +41,12 @@ const ConfirmedPersonalTrainerMembershipSchema = new Schema({
     trainer: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Trainer', required: true
     },
+    trainingDays: {
+        type: String, required: true,
+    },
+    trainingPeriod: {
+        type: String, required: true,
+    },
     dateTo: {
         type: Date, required: true
     }

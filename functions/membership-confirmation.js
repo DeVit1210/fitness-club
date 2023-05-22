@@ -40,7 +40,9 @@ const confirmTrainerMembership = (parentNode, button) => {
                 },
                 data: JSON.stringify({
                     trainerId: trainerId,
-                    timePeriod: parentNode.querySelector('.active').textContent.split(', ')[3]
+                    timePeriod: parentNode.querySelector('.active').textContent.split(', ')[3],
+                    trainingPeriod: parentNode.querySelector('.active').textContent.split(', ')[3],
+                    trainingDays: parentNode.querySelector('.active').textContent.split(', ')[2]
                 }),
                 success: () => {
                     alert("Покупка абонемента прошла успешно!");

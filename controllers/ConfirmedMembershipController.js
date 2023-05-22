@@ -48,6 +48,8 @@ function generateMembershipData(membership, data, callback) {
         }
         case 'trainer': {
             membershipData.trainer = data.trainer;
+            membershipData.trainingDays = data.trainingDays;
+            membershipData.trainingPeriod = data.trainingPeriod;
             Trainer.findByIdAndUpdate(data.trainer, {$inc: {clientQuantity: 1}})
             callback(null, new ConfirmedPersonalTrainerMembership(membershipData)); break;
         }
