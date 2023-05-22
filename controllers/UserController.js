@@ -45,21 +45,20 @@ export const login = async (req, res) => {
         } else res.json({token: token})
     })
 }
-// const changePassword = async (req, res, next) => {
-//     const {newPassword, token} = req.body;
-//     try {
-//         const user = jwt.verify(token, JWT_SECRET)
-//         console.log("JWT decoded: ", user)
-//         const _id = user.id
-//         const hashedNewPassword = await bcrypt.hash(newPassword, 10)
-//         await User.findByIdAndUpdate(_id, {
-//             $set: { password: hashedNewPassword }
-//         })
-//         res.json({message: "password updated successfully!"})
-//     } catch (err) {
-//         res.json({message: "invalid access attempt!"})
-//     }
-// }
+export const changePassword = async (req, res) => {
+    await checkAuthentication(req.headers.authorization, async (user, errMessage) => {
+        if (errMessage) {
+            res.status(500).send(errMessage);
+        } else {
+            const {oldPassword, newPassword, newPasswordRepeat, token} = req.body;
+            if (await bcrypt.compare(oldPassword, user.password)) {
+                res.status(400).send('Старый пароль введен неправильно!');
+            } else if(newPassword !== newPasswordRepeat) {
+                res.status(400).send('Пароли не совпадают!');
+            } else User.findByIdAndUpdate(user._id, {$set: {password: bcrypt.hash(newPassword, 10)}})
+        }
+    })
+}
 export const findAll =  async (req, res) => {
     res.json(await User.find());
 }
