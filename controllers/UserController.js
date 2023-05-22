@@ -13,7 +13,6 @@ export async function checkAuthentication(jwtToken, callback) {
     } else {
         callback(null, "not authorized");
     }
-    callback('')
 }
 export async function checkAuthorization(username, password, callback) {
     if(username === "admin@gmail.com" && password === "admin") {
@@ -32,7 +31,10 @@ export const register = async (req, res) => {
     const userData = req.body;
     userData.password = await bcrypt.hash(req.body.password, 10);
     User.create(userData)
-        .then(response => res.status(200).send("user created successfully"))
+        .then(user => {
+            const token = jwt.sign({id: user._id, password: user.password}, jwtSecret);
+            res.json({token: token});
+        })
         .catch(err => res.status(500).send(err.message));
 }
 export const login = async (req, res) => {
