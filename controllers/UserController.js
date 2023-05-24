@@ -17,15 +17,16 @@ export async function checkAuthentication(jwtToken, callback) {
 export async function checkAuthorization(username, password, callback) {
     if(username === "admin@gmail.com" && password === "admin") {
         callback("admin", null);
+    } else {
+        const user = await User.findOne({username: username}).lean();
+        if(!user) {
+            callback(null, "wrong username");
+        }
+        const isPasswordCorrect = await bcrypt.compare(password, user.password)
+        if (isPasswordCorrect) {
+            callback(jwt.sign({id: user._id, username: user.username}, jwtSecret), null);
+        } else callback(null, "wrong password");
     }
-    const user = await User.findOne({username: username}).lean();
-    if(!user) {
-        callback(null, "wrong username");
-    }
-    const isPasswordCorrect = await bcrypt.compare(password, user.password)
-    if (isPasswordCorrect) {
-        callback(jwt.sign({id: user._id, username: user.username}, jwtSecret), null);
-    } else callback(null, "wrong password");
 }
 export const register = async (req, res) => {
     const userData = req.body;

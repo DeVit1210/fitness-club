@@ -19,48 +19,58 @@ const confirmVisitOrPeriodMembership = (parentNode, button) => {
 }
 
 const confirmTrainerMembership = (parentNode, button) => {
-    const trainerId = parentNode.querySelector('.active').getAttribute('data-trainer-id');
-    console.log(parentNode.querySelector('.active').textContent.split(', ')[4])
-    console.log(parentNode.querySelector('.active').textContent.split(', ')[3])
-    $.ajax({
-        url: "http://localhost:8080/confirmed-membership/add/" + button.getAttribute('data-id'),
-        type: "POST",
-        headers: {
-            authorization: localStorage.getItem('token')
-        },
-        contentType: "application/json",
-        data: JSON.stringify({
-            dateFrom: parentNode.querySelector('.membership__date').value,
-            trainer: trainerId,
-            timePeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
-            trainingPeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
-            trainingDays: parentNode.querySelector('.active').textContent.split(', ')[3]
-        }),
-        success: () => {
-            console.log(parentNode.querySelector('.active').textContent.split(', '))
-            $.ajax({
-                url: "http://localhost:8080/schedule/update/take",
-                type: "POST",
-                contentType: "application/json",
-                headers: {
-                    authorization: localStorage.getItem('token')
-                },
-                data: JSON.stringify({
-                    trainerId: trainerId,
-                    timePeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
-                }),
-                success: () => {
-                    alert("Покупка абонемента прошла успешно!");
-                    closeSecondPopup();
-                    window.location.reload();
-                }
-            })
-        }
-    })
+    if(!parentNode.querySelector('.active')) {
+        alert('Выберите временной промежуток и тренера, с которым хотите заниматься!');
+    } else {
+        const trainerId = parentNode.querySelector('.active').getAttribute('data-trainer-id');
+        $.ajax({
+            url: "http://localhost:8080/confirmed-membership/add/" + button.getAttribute('data-id'),
+            type: "POST",
+            headers: {
+                authorization: localStorage.getItem('token')
+            },
+            contentType: "application/json",
+            data: JSON.stringify({
+                dateFrom: parentNode.querySelector('.membership__date').value,
+                trainer: trainerId,
+                timePeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
+                trainingPeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
+                trainingDays: parentNode.querySelector('.active').textContent.split(', ')[3]
+            }),
+            success: () => {
+                console.log(parentNode.querySelector('.active').textContent.split(', '))
+                $.ajax({
+                    url: "http://localhost:8080/schedule/update/take",
+                    type: "POST",
+                    contentType: "application/json",
+                    headers: {
+                        authorization: localStorage.getItem('token')
+                    },
+                    data: JSON.stringify({
+                        trainerId: trainerId,
+                        timePeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
+                    }),
+                    success: () => {
+                        alert("Покупка абонемента прошла успешно!");
+                        closeSecondPopup();
+                        window.location.reload();
+                    }
+                })
+            }
+        })
+    }
 }
 
 const firstPopupButton = firstPopup.querySelector('button');
-firstPopupButton.addEventListener('click', () => confirmVisitOrPeriodMembership(firstPopup, firstPopupButton))
+firstPopupButton.addEventListener('click', () => {
+    if(localStorage.getItem('token')) {
+        confirmVisitOrPeriodMembership(firstPopup, firstPopupButton);
+    } else window.location.href = '../pages/authorization/authorization.html';
+})
 
 const secondPopupButton = secondPopup.querySelector('button');
-secondPopupButton.addEventListener('click', () => confirmTrainerMembership(secondPopup, secondPopupButton))
+secondPopupButton.addEventListener('click', () => {
+    if(localStorage.getItem('token')) {
+        confirmTrainerMembership(secondPopup, secondPopupButton)
+    } else window.location.href = '../pages/authorization/authorization.html';
+})

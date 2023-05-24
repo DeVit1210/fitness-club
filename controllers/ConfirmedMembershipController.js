@@ -56,7 +56,7 @@ async function generateMembershipData(membership, data, callback) {
             membershipData.trainer = data.trainer;
             membershipData.trainingDays = data.trainingDays;
             membershipData.trainingPeriod = data.trainingPeriod;
-            membershipData.dateTo = new Date(membershipData.dateFrom + membership.monthsQuantity * 30);
+            membershipData.dateTo.setDate(membershipData.dateTo.getDate() + (membership.monthsQuantity * 30))
             await Trainer.findByIdAndUpdate(data.trainer, {$inc: {clientQuantity: 1}})
             callback(null, new ConfirmedPersonalTrainerMembership(membershipData));
             break;

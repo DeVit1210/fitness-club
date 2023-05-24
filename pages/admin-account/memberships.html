@@ -1,7 +1,7 @@
 <h3 class="account__title">Абонементы</h3>
 <form class="memberships__filter-form">
     <label for="memberships-select">Выберите тип абонемента:
-        <select id="memberships-select">
+        <select id="memberships-select" required>
             <option>Безлимитный</option>
             <option>С тренером</option>
             <option>Ограниченный</option>
@@ -13,13 +13,13 @@
 <h3 class="account__title">Добавление нового абонемента</h3>
 <form class="memberships__add-form">
     <label for="add-membersip__name">Название абонемента:
-        <input id="add-membersip__name" name="name">
+        <input id="add-membersip__name" name="name" required>
     </label>
     <label for="add-membersip__price">Стоимость:
-        <input id="add-membersip__price" name="price">
+        <input id="add-membersip__price" name="price" required>
     </label>
     <label for="add-membersip__info">Описание абонемента:
-        <input id="add-membersip__info" name="info">
+        <input id="add-membersip__info" name="info" required>
     </label>
     <label for="add-membersip__type">Описание абонемента:
         <select id="add-membersip__type">

@@ -23,7 +23,7 @@ document.querySelectorAll('.date_input').forEach(dateInput => {
     });
 })
 
-document.querySelector('.issued-memberships__filter-form .button').addEventListener('click', (event) => {
+document.querySelector('.issued-memberships__filter-form').addEventListener('submit', (event) => {
     event.preventDefault();
     $.ajax({
         url: "http://localhost:8080/confirmed-membership/filter",

@@ -247,9 +247,9 @@
                 </div>
                 <div class="popup__content">
                     <label for="membership__date">Введите дату начала действия абонемента:</label>
-                    <input class="membership__date" type="date">
+                    <input class="membership__date" type="date" required>
                     <label for="membership__address">Введите адрес клуба, который хотели посещать:</label>
-                    <select id="membership__address">
+                    <select id="membership__address" required>
                         <option>пр. Независимости, 123</option>
                         <option>ул. Гуртьева, 17</option>
                         <option>ул. Тимошенко 134</option>
@@ -279,7 +279,7 @@
                 </div>
                 <div class="popup__content">
                     <label for="membership__date">Введите дату начала действия абонемента:</label>
-                    <input class="membership__date" id="membership__date" type="date">
+                    <input class="membership__date" id="membership__date" type="date" required>
                     <label>Выберите тренера, с которым хотели бы заниматься:</label>
                 </div>
             </div>
@@ -324,6 +324,7 @@
             <p class="logo__text">Сеть фитнес-клубов в Минске</p>
         </div>
     </div>
+    <script src="../functions/date-restriction.js"></script>
     <script src="../functions/authentication-check.js"></script>
     <script src="../functions/popup.js"></script>
     <script src="../functions/popup-load.js"></script>
