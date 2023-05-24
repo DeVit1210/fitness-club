@@ -5,6 +5,15 @@ const item_left=document.querySelector(".item-left");
 const item_right=document.querySelector(".item-right");
 const item_active=document.querySelector(".item-active");
 
+
+let trainers=[];
+$.ajax({
+    url: "http://localhost:8080/trainer/",
+    type: "GET",
+    success: (data) => {
+        trainers=data;
+    }
+})
 const moveLeft=()=>{
     carousel.classList.add("transition-left");
     arrow_left.removeEventListener("click", moveLeft);
@@ -45,13 +54,10 @@ carousel.addEventListener("animationstart", (animationEvent)=> {
     } else {
         changrdItem=item_right;
     }
-    // changrdItem.innerHTML="";
-    // for(let i=0;i<3;i++){
-    //     const card=createCardTemplate();
-    //     card.children[0].src=pets[indexes[i]].image;
-    //     card.children[1].textContent=pets[indexes[i]].name;
-    //     card.children[2].textContent="Learn more"
-    //     changrdItem.appendChild(card);
-    // }
+    changrdItem.innerHTML="";
+    for(let i=0;i<trainers.length;i++){
+        const card=trainerCardTemplate(trainers[i]);
+        changrdItem.appendChild(card);
+    }
 })
 
