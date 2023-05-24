@@ -11,5 +11,5 @@ ConfirmedMembershipRoute.post("/", findAllSorted);
 ConfirmedMembershipRoute.post("/filter", findBetweenWithType);
 ConfirmedMembershipRoute.post("/total", findBetweenWithTypeTotalValue);
 ConfirmedMembershipRoute.post('/find', findWithUserAndType);
-ConfirmedMembershipRoute.put('/decrease', decreaseQuantity)
+ConfirmedMembershipRoute.put('/decrease/:id', decreaseQuantity)
 ConfirmedMembershipRoute.get('/user/find', findWithUser)

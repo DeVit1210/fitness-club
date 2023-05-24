@@ -166,16 +166,19 @@ export const findWithUserAndType = (req, res) => {
     const {userId, type} = req.body;
     ConfirmedMembership.find({__t: getSchemaFromConfirmedMembershipType(type), user: userId})
         .then(memberships => res.json(memberships))
-        .catch(err => res.json(400).send(err.message));
+        .catch(err => res.status(400).send(err.message));
 }
 
 export const decreaseQuantity = (req, res) => {
     const membershipId = req.params.id;
-    ConfirmedMembership.findById(membershipId).then(membership => {
-        membership.leftVisitQuantity = membership.leftVisitQuantity - 1;
-        if(membership.leftVisitQuantity === 0) {
-            ConfirmedMembership.findByIdAndRemove(membershipId).then(() => res.json('membership deleted'))
-        } else res.json(() => 'left visit quantity has been decreased')
+    ConfirmedMembership.findById(membershipId).then( membership => {
+        console.log(membership);
+        if(membership.leftVisitQuantity - 1 === 0) {
+            membership.status = 'expired';
+            membership.leftVisitQuantity = 0;
+        } else membership.leftVisitQuantity--;
+        console.log(membership);
+        membership.save().then(() => res.json('left visit quantity has been decreased'));
     }).catch(err => res.status(400).send(err.message));
 }
 
