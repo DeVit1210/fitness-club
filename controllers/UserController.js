@@ -35,7 +35,10 @@ export const register = async (req, res) => {
             const token = jwt.sign({id: user._id, password: user.password}, jwtSecret);
             res.json({token: token});
         })
-        .catch(err => res.status(500).send(err.message));
+        .catch(err => {
+            console.log(err.message);
+            res.status(500).send(err.message)
+        });
 }
 export const login = async (req, res) => {
     const {username, password} = req.body;
@@ -45,17 +48,28 @@ export const login = async (req, res) => {
         } else res.json({token: token})
     })
 }
+export const find = async (req, res) => {
+    await checkAuthentication(req.headers.authorization, (user, errMessage) => {
+        if (errMessage) {
+            res.status(500).send(errMessage);
+        } else res.send(user);
+    })
+}
+
 export const changePassword = async (req, res) => {
     await checkAuthentication(req.headers.authorization, async (user, errMessage) => {
         if (errMessage) {
             res.status(500).send(errMessage);
         } else {
-            const {oldPassword, newPassword, newPasswordRepeat, token} = req.body;
-            if (await bcrypt.compare(oldPassword, user.password)) {
+            const {oldPassword, newPassword, newPasswordRepeat} = req.body;
+            if (!await bcrypt.compare(oldPassword, user.password)) {
                 res.status(400).send('Старый пароль введен неправильно!');
             } else if(newPassword !== newPasswordRepeat) {
                 res.status(400).send('Пароли не совпадают!');
-            } else User.findByIdAndUpdate(user._id, {$set: {password: bcrypt.hash(newPassword, 10)}})
+            } else {
+                await User.findByIdAndUpdate(user._id, {$set: {password: await bcrypt.hash(newPassword, 10)}})
+                res.json('ok');
+            }
         }
     })
 }
@@ -82,16 +96,7 @@ export const update = async (req, res) => {
             .catch(err => res.status(400).send(err.message))
     })
 }
-export const findMemberships = async (req, res) => {
-    const token = req.headers.authorization;
-    await checkAuthentication(token, (user, errMessage) => {
-        if (errMessage) {
-            res.status(500).send(errMessage);
-        } else User.findById(user.id).populate('memberships')
-            .then(user => res.json(user.memberships))
-            .catch(err => res.status(400).send(err.message))
-    })
-}
+
 export const findMembershipsWithStatus= async (req, res) => {
     const token = req.headers.authorization;
     await checkAuthentication(token, (user, errMessage) => {

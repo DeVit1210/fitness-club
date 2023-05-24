@@ -10,6 +10,11 @@ $.ajax({
         })
     }
 })
+
+function getMembershipType(value) {
+    return value === 'Безлимитный' ? 'period' : (value === 'С тренером' ? 'trainer' : 'visit');
+}
+
 document.querySelectorAll('.date_input').forEach(dateInput => {
     dateInput.addEventListener("input", (event) => {
         const input = event.target.value;
@@ -26,7 +31,7 @@ document.querySelector('.issued-memberships__filter-form .button').addEventListe
         data: {
             startDate: document.getElementById('memberships-select__start-date').value,
             endDate: document.getElementById('memberships-select__end-date').value,
-            type: document.getElementById('memberships-select__type').value
+            type: getMembershipType(document.getElementById('memberships-select__type').value)
         },
         success: (memberships) => {
             document.getElementById('table-container').innerHTML = '';
@@ -48,9 +53,9 @@ function handleConfirmedMemberships(table, memberships) {
     memberships.forEach(confirmedMembership => {
         console.log(confirmedMembership);
         const tr = document.createElement('tr');
-       // tr.appendChild(createCell(confirmedMembership.user.surname + " " + confirmedMembership.user.surname));
+        tr.appendChild(createCell(confirmedMembership.user.surname + " " + confirmedMembership.user.name));
         tr.appendChild(createCell(confirmedMembership.membership.name))
-        //tr.appendChild(createCell(confirmedMembership.confirmationDate.substring(0, 10)));
+        tr.appendChild(createCell(confirmedMembership.confirmationDate.substring(0, 10)));
         tr.appendChild(createCell(confirmedMembership.dateFrom.substring(0, 10)))
         tr.appendChild(createCell(confirmedMembership.status))
         table.querySelector('tbody').appendChild(tr);
@@ -68,9 +73,9 @@ function getFormattedDate(input) {
     if (input.length > 0) {
         formattedDate += input.substring(0, 2);
         if (input.length >= 3) {
-            formattedDate += "-" + input.substring(2, 4);
+            formattedDate += "/" + input.substring(2, 4);
             if (input.length > 4) {
-                formattedDate += "-" + input.substring(4, 8);
+                formattedDate += "/" + input.substring(4, 8);
             }
         }
     }

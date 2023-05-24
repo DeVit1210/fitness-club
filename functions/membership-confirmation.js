@@ -7,7 +7,8 @@ const confirmVisitOrPeriodMembership = (parentNode, button) => {
         },
         contentType: "application/json",
         data: JSON.stringify({
-            dateFrom: parentNode.querySelector('.membership__date').value
+            dateFrom: parentNode.querySelector('.membership__date').value,
+            address: parentNode.querySelector('#membership__address').value
         }),
         success: () => {
             alert("Покупка абонемента прошла успешно!");
@@ -19,6 +20,8 @@ const confirmVisitOrPeriodMembership = (parentNode, button) => {
 
 const confirmTrainerMembership = (parentNode, button) => {
     const trainerId = parentNode.querySelector('.active').getAttribute('data-trainer-id');
+    console.log(parentNode.querySelector('.active').textContent.split(', ')[4])
+    console.log(parentNode.querySelector('.active').textContent.split(', ')[3])
     $.ajax({
         url: "http://localhost:8080/confirmed-membership/add/" + button.getAttribute('data-id'),
         type: "POST",
@@ -28,9 +31,13 @@ const confirmTrainerMembership = (parentNode, button) => {
         contentType: "application/json",
         data: JSON.stringify({
             dateFrom: parentNode.querySelector('.membership__date').value,
-            trainer: trainerId
+            trainer: trainerId,
+            timePeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
+            trainingPeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
+            trainingDays: parentNode.querySelector('.active').textContent.split(', ')[3]
         }),
         success: () => {
+            console.log(parentNode.querySelector('.active').textContent.split(', '))
             $.ajax({
                 url: "http://localhost:8080/schedule/update/take",
                 type: "POST",
@@ -40,9 +47,7 @@ const confirmTrainerMembership = (parentNode, button) => {
                 },
                 data: JSON.stringify({
                     trainerId: trainerId,
-                    timePeriod: parentNode.querySelector('.active').textContent.split(', ')[3],
-                    trainingPeriod: parentNode.querySelector('.active').textContent.split(', ')[3],
-                    trainingDays: parentNode.querySelector('.active').textContent.split(', ')[2]
+                    timePeriod: parentNode.querySelector('.active').textContent.split(', ')[4],
                 }),
                 success: () => {
                     alert("Покупка абонемента прошла успешно!");

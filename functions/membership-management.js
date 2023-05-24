@@ -80,7 +80,6 @@ document.querySelector('.memberships__del-form').addEventListener('submit', () =
     })
 })
 
-
 function getMembershipType(value) {
     return value === 'Безлимитный' ? 'period' : (value === 'С тренером' ? 'trainer' : 'visit');
 }

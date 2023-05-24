@@ -15,6 +15,7 @@ document.querySelector('.password__change-form').addEventListener('submit', (eve
         success: () => {
             alert('Пароль обновлен успешно!');
             window.location.reload();
-        }
+        },
+        error: (err) => alert(err.responseText)
     })
 })

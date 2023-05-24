@@ -1,3 +1,17 @@
+$.ajax({
+    url: "http://localhost:8080/user/find",
+    type: "GET",
+    headers: {
+        'Authorization': localStorage.getItem('token')
+    },
+    success: (user) => {
+        document.getElementById('edit-data__surname').value = user.surname;
+        document.getElementById('edit-data__name').value = user.name;
+        document.getElementById('edit-data__phone').value = user.phoneNumber;
+    }
+})
+
+
 document.querySelector('.personal-data__edit-form').addEventListener('submit', (event) => {
     event.preventDefault();
     $.ajax({

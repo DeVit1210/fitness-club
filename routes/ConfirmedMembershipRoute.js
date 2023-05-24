@@ -1,4 +1,4 @@
-import {add, findAll, findByType, findAllSorted} from "../controllers/ConfirmedMembershipController.js";
+import {add, findAll, findByType, findAllSorted, findWithUser} from "../controllers/ConfirmedMembershipController.js";
 import {findBetweenWithTypeTotalValue, findWithUserAndType} from "../controllers/ConfirmedMembershipController.js";
 import {findBetweenWithType, decreaseQuantity} from "../controllers/ConfirmedMembershipController.js";
 import express from "express";
@@ -12,3 +12,4 @@ ConfirmedMembershipRoute.post("/filter", findBetweenWithType);
 ConfirmedMembershipRoute.post("/total", findBetweenWithTypeTotalValue);
 ConfirmedMembershipRoute.post('/find', findWithUserAndType);
 ConfirmedMembershipRoute.put('/decrease', decreaseQuantity)
+ConfirmedMembershipRoute.get('/user/find', findWithUser)

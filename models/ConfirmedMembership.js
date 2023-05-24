@@ -24,6 +24,9 @@ export const ConfirmedMembership =
 const ConfirmedVisitMembershipSchema = new Schema({
     leftVisitQuantity: {
         type: Number, required: true
+    },
+    address: {
+        type: String, required: true
     }
 })
 export const ConfirmedVisitMembership =
@@ -32,6 +35,9 @@ export const ConfirmedVisitMembership =
 const ConfirmedPeriodMembershipSchema = new Schema({
     dateTo: {
         type: Date, required: true
+    },
+    address: {
+        type: String, required: true
     }
 })
 export const ConfirmedPeriodMembership =

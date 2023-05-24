@@ -21,6 +21,7 @@ function getMembershipType(membership){
 }
 
 export function getSchemaFromConfirmedMembershipType(type) {
+    if(type === 'Все') return 'Все';
     switch (type) {
         case 'visit': return 'ConfirmedVisitMembership';
         case 'period': return 'ConfirmedPeriodMembership';
@@ -28,7 +29,7 @@ export function getSchemaFromConfirmedMembershipType(type) {
     }
 }
 
-function generateMembershipData(membership, data, callback) {
+async function generateMembershipData(membership, data, callback) {
     const membershipType = getMembershipType(membership);
     const membershipData = {
         membership: membership,
@@ -40,20 +41,28 @@ function generateMembershipData(membership, data, callback) {
     switch (membershipType) {
         case 'visit': {
             membershipData.leftVisitQuantity = membership.visitQuantity
-            callback(null, new ConfirmedVisitMembership(membershipData)); break;
+            membershipData.address = data.address
+            callback(null, new ConfirmedVisitMembership(membershipData));
+            break;
         }
         case 'period': {
-            membershipData.dateTo = new Date(membershipData.dateFrom + membership.monthsQuantity * 30);
-            callback(null, new ConfirmedPeriodMembership(membershipData)); break;
+            membershipData.dateTo = new Date(membershipData.dateFrom)
+            membershipData.dateTo.setDate(membershipData.dateTo.getDate() + (membership.monthsQuantity * 30))
+            membershipData.address = data.address
+            callback(null, new ConfirmedPeriodMembership(membershipData));
+            break;
         }
         case 'trainer': {
             membershipData.trainer = data.trainer;
             membershipData.trainingDays = data.trainingDays;
             membershipData.trainingPeriod = data.trainingPeriod;
-            Trainer.findByIdAndUpdate(data.trainer, {$inc: {clientQuantity: 1}})
-            callback(null, new ConfirmedPersonalTrainerMembership(membershipData)); break;
+            membershipData.dateTo = new Date(membershipData.dateFrom + membership.monthsQuantity * 30);
+            await Trainer.findByIdAndUpdate(data.trainer, {$inc: {clientQuantity: 1}})
+            callback(null, new ConfirmedPersonalTrainerMembership(membershipData));
+            break;
         }
-        default: callback('wrong membership type', null);
+        default:
+            callback('wrong membership type', null);
     }
 }
 
@@ -101,18 +110,25 @@ export const destroy = async (req, res) => {
             .catch(() => res.status(400).send("invalid membership id"))
     })
 }
-async function findBetween(start, end) {
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-    return ConfirmedMembership.find({confirmationDate: {$gte: startDate, $lte: endDate}});
+async function findBetween(start, end, callback) {
+    const startParts = start.split('/');
+    const startDate = new Date(+startParts[2], startParts[1] - 1, +startParts[0]);
+    const endParts = end.split('/');
+    const endDate = new Date(+endParts[2], endParts[1] - 1, +endParts[0]);
+    const memberships =
+        await ConfirmedMembership.find({confirmationDate: {$gte: startDate, $lte: endDate}})
+            .populate({path: 'user', select: 'surname name'})
+            .populate({path: 'membership', select: 'name price'})
+    callback(memberships);
 }
 
-export const findBetweenWithType = (req, res) => {
-    findBetween(req.body.startDate, req.body.endDate).then(response => {
-        if (req.body.type) {
-            res.json(response.filter(item => item.__t === getSchemaNameFromType(req.body.type)))
+export const findBetweenWithType = async (req, res) => {
+    await findBetween(req.body.startDate, req.body.endDate, (response) => {
+        console.log(req.body.type);
+        if (req.body.type && req.body.type !== 'Все') {
+            res.json(response.filter(item => item.__t === getSchemaFromConfirmedMembershipType(req.body.type)))
         } else res.json(response);
-    }).catch(err => res.status(400).send(err.message));
+    })
 }
 
 export const findBetweenWithTypeTotalValue = (req, res) => {
@@ -131,6 +147,19 @@ export const findAllSorted = (req, res) => {
     ConfirmedMembership.find().sort(sortRule)
         .then(response => res.json(response))
         .catch(err => res.json(400).send(err.message));
+}
+
+export const findWithUser = async (req, res) => {
+    const token = req.headers.authorization;
+    await checkAuthentication(token, (user, errMessage) => {
+        if (errMessage) {
+            res.status(500).send(errMessage);
+        } else ConfirmedMembership.find({user: user._id})
+            .populate({path: 'membership', select: 'name price'})
+            .populate({path: 'trainer', select: 'surname name address'})
+            .then(memberships => res.json(memberships))
+            .catch(err => res.status(400).send(err.message))
+    })
 }
 
 export const findWithUserAndType = (req, res) => {
