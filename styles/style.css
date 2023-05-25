@@ -711,6 +711,12 @@ input{
 .memberships__filter-form select{
     margin-top: 20px;
 }
+#membership-count{
+    display: none;
+}
+#timetable__label{
+    margin: 30px 0 15px;
+}
 
 .scroll_lock {
     overflow: hidden;

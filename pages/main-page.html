@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>LifeFit</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../node_modules/splide-4.1.3/dist/css/splide.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../node_modules/splide-4.1.3/dist/js/splide.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -15,11 +17,10 @@
         </div>
         <nav class="header__navigation">
             <ul class="navigation">
-                <li class="navigation__link"><a href="#" class="link">О фитнес-клубе</a></li>
-                <li class="navigation__link"><a href="#" class="link">Услуги</a></li>
-                <li class="navigation__link"><a href="#" class="link">Абонементы</a></li>
-                <li class="navigation__link"><a href="#" class="link">Фото и видео</a></li>
-                <li class="navigation__link"><a href="#" class="link">Контакты</a></li>
+                <li class="navigation__link"><a href="#about-us" class="link">О фитнес-клубе</a></li>
+                <li class="navigation__link"><a href="#memberships" class="link">Абонементы</a></li>
+                <li class="navigation__link"><a href="#photo" class="link">Фото и видео</a></li>
+                <li class="navigation__link"><a href="#contacts" class="link">Контакты</a></li>
             </ul>
         </nav>
         <div class="header__buttons"></div>
@@ -34,11 +35,11 @@
                     <h1 class="promo__title">Фитнес и тренажерный зал</h1>
                     <p class="promo__text">Записаться на первую тренировку бесплатно</p>
                 </div>
-                <button class="button button_colored">Записаться</button>
+                <button class="button button_colored" onclick="location.href='#free-train'">Записаться</button>
             </div>
         </div>
     </section>
-    <section class="about-us">
+    <section class="about-us" id="about-us">
         <div class="wrapper about-us__wrapper">
             <p class="about-us__info">Цель фитнес-клуба <span>Life<span>Fit</span></span> - помогать в поддержании здорового образа жизни и полезной физической активности</p>
             <div class="layout-3-column advantages">
@@ -61,77 +62,21 @@
         <div class="wrapper trainers__wrapper">
             <h3 class="trainers__title">Тренеры</h3>
             <div class="trainers__carousel">
-                <div class="arrow-left">
-                    <img src="../src/arrow.png">
-                </div>
-                <div class="carousel__wrapper">
-                    <div class="layout-3-column carousel">
-                        <div class="item-left">
-                            <div class="trainer">
-                                <img src="../src/trainer1.png">
-                                <div class="trainer__content">
-                                    <p class="trainer__name">
-                                        Станислав Лашковский
-                                    </p>
-                                    <p class="trainer__education">
-                                        Образование: высшая категория
-                                    </p>
-                                    <p class="trainer__experience">
-                                        Стаж работы: 6 лет
-                                    </p>
-                                    <p class="trainer__info">
-                                        Дополнительная информация: Разработал большое количество индивидуальных тренировок под тип фигуры
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-active">
-                            <div class="trainer">
-                                <img src="../src/trainer1.png">
-                                <div class="trainer__content">
-                                    <p class="trainer__name">
-                                        Станислав Лашковский
-                                    </p>
-                                    <p class="trainer__education">
-                                        Образование: высшая категория
-                                    </p>
-                                    <p class="trainer__experience">
-                                        Стаж работы: 6 лет
-                                    </p>
-                                    <p class="trainer__info">
-                                        Дополнительная информация: Разработал большое количество индивидуальных тренировок под тип фигуры
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-right">
-                            <div class="trainer">
-                                <img src="../src/trainer1.png">
-                                <div class="trainer__content">
-                                    <p class="trainer__name">
-                                        Станислав Лашковский
-                                    </p>
-                                    <p class="trainer__education">
-                                        Образование: высшая категория
-                                    </p>
-                                    <p class="trainer__experience">
-                                        Стаж работы: 6 лет
-                                    </p>
-                                    <p class="trainer__info">
-                                        Дополнительная информация: Разработал большое количество индивидуальных тренировок под тип фигуры
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+<!--                <div class="arrow-left">-->
+<!--                    <img src="../src/arrow.png">-->
+<!--                </div>-->
+                <div class= "splide">
+                    <div class="splide__track">
+                        <div class="splide__list"></div>
                     </div>
                 </div>
-                <div class="arrow-right">
-                    <img src="../src/arrow.png">
-                </div>
+<!--                <div class="arrow-right">-->
+<!--                    <img src="../src/arrow.png">-->
+<!--                </div>-->
             </div>
         </div>
     </section>
-    <section class="memberships">
+    <section class="memberships" id="memberships">
         <div class="wrapper memberships__wrapper">
             <h3 class="memberships__title">Абонементы</h3>
             <div class="membership">
@@ -215,7 +160,7 @@
             </div>
         </div>
     </section>
-    <section class="photo">
+    <section class="photo" id="photo">
         <div class="wrapper photo__wrapper">
             <h3 class="photo__title">Фотографии клуба</h3>
             <div class="layout-2-column">
@@ -286,25 +231,27 @@
         </div>
     </div>
 </main>
-<footer class="footer">
+<footer class="footer" id="contacts">
     <div class="wrapper footer__wrapper">
         <div class="footer__contacts">
             <h3 class="contacts__title">Контакты</h3>
             <div class="layout-4-column">
                 <div class="contact contacts__address">
-                    <p class="contacts__text">Адрес</p>
+                    <p class="contacts__text">Адреса</p>
                     <p class="contacts__info">г. Минск, пр. Независимости 123</p>
+                    <p class="contacts__info">г. Минск, ул. Тимошенко 153</p>
+                    <p class="contacts__info">г. Минск, ул. Гуртьева 17</p>
                 </div>
                 <div class="contact contacts__messengers">
                     <p class="contacts__text">Мессенджеры</p>
                     <div class="messenger__icon">
-                        <img src="../src/whatsapp-logo_icon-icons.com_57054.png">
+                        <a href="https://www.whatsapp.com/"><img src="../src/whatsapp-logo_icon-icons.com_57054.png"></a>
                     </div>
                     <div class="messenger__icon">
-                        <img src="../src/instagram_f_icon-icons.com_65485.png">
+                        <a href="https://www.instagram.com/"><img src="../src/instagram_f_icon-icons.com_65485.png"></a>
                     </div>
                     <div class="messenger__icon">
-                        <img src="../src/telegram_icon_131945.png">
+                        <a href="https://telegram.org/"><img src="../src/telegram_icon_131945.png"></a>
                     </div>
                 </div>
                 <div class="contact contacts__phone">
@@ -312,7 +259,7 @@
                     <p class="contacts__info">+375 (33) 746-81-12</p>
                 </div>
                 <div class="contact contacts__button">
-                    <button class="button button_colored">
+                    <button class="button button_colored" onclick="location.href='#free-train'">
                         Заказать звонок
                     </button>
                 </div>
@@ -329,10 +276,10 @@
     <script src="../functions/popup.js"></script>
     <script src="../functions/popup-load.js"></script>
     <script src="../functions/trainer-load.js"></script>
-    <script src="../functions/carousel.js"></script>
     <script src="../functions/memberships-load.js"></script>
     <script src="../functions/consultation.js"></script>
     <script src="../functions/membership-confirmation.js"></script>
+    <script src="../functions/carousel.js"></script>
 </footer>
 </body>
 </html>

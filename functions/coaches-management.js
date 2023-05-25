@@ -150,5 +150,19 @@ function handleTrainers(table, trainers) {
     })
 }
 
+let checkbox=document.getElementsByName('timetable');
+checkbox.forEach(elem=>{
+    elem.addEventListener('click', ()=>{
+        let count=0;
+        checkbox.forEach(elem=>{
+            if(elem.checked===true){
+                count++;
+            }
+        })
+        if(count>3){
+            elem.checked=false;
+        }
+    })
+})
 
 

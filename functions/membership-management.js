@@ -95,5 +95,16 @@ function handleMemberships(table, memberships) {
     })
 }
 
-
+let type=document.querySelector('#add-membersip__type');
+type.addEventListener('change', event=>{
+    console.log(type.value);
+    if(type.value==='Ограниченный'){
+        document.querySelector('#membership-count').style.display='block';
+        document.querySelector('#membership-period').style.display='none';
+    }
+    else{
+        document.querySelector('#membership-period').style.display='block';
+        document.querySelector('#membership-count').style.display='none';
+    }
+})
 

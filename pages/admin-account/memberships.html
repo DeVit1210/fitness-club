@@ -21,12 +21,18 @@
     <label for="add-membersip__info">Описание абонемента:
         <input id="add-membersip__info" name="info" required>
     </label>
-    <label for="add-membersip__type">Описание абонемента:
+    <label for="add-membersip__type">Тип абонемента:
         <select id="add-membersip__type">
-            <option>Безлимитный</option>
-            <option>С тренером</option>
-            <option>Ограниченный</option>
+            <option value="Безлимитный">Безлимитный</option>
+            <option value="С тренером">С тренером</option>
+            <option value="Ограниченный">Ограниченный</option>
         </select>
+    </label>
+    <label for="add-membersip__count" id="membership-count">Количество посещений:
+        <input id="add-membersip__count" name="count">
+    </label>
+    <label for="add-membersip__period" id="membership-period">Срок действия:
+        <input id="add-membersip__period" name="period">
     </label>
     <button type="submit" class="button button_colored">Добавить</button>
 </form>
